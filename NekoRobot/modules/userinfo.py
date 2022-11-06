@@ -242,10 +242,10 @@ def info(update: Update, context: CallbackContext):
     buttons = [
         [
             InlineKeyboardButton(
-                text="Health", url="https://t.me/Programmer_Updates/10"
+                text="Health", url="https://t.me/WOFBotsUpdates/2"
             ),
             InlineKeyboardButton(
-                text="Disasters", url="https://t.me/Programmer_Updates/11"
+                text="Disasters", url="https://t.me/WOFBotsUpdates/3"
             ),
         ],
     ]
