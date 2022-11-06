@@ -255,7 +255,7 @@ def start(update: Update, context: CallbackContext):
                         [
                             [
                                 InlineKeyboardButton(
-                                    text="[► Back ◄]", callback_data="help_back"
+                                    text="⥀ʙᴀᴄᴋ⥁", callback_data="help_back"
                                 )
                             ]
                         ]
@@ -306,7 +306,7 @@ def start(update: Update, context: CallbackContext):
                         ),
                         InlineKeyboardButton(
                             text="📢 Updates",
-                            url="https://telegram.dog/Programmer_Updates",
+                            url="https://telegram.dog/hsslevii",
                         ),
                     ]
                 ]
