@@ -316,20 +316,25 @@ def info(update: Update, context: CallbackContext):
     except:
         pass  # don't crash if api is down somehow...
 
+    disaster_level_present = False
+
     if user.id == OWNER_ID:
-        text += "\n\nThe Disaster level of this person is 'God'."
-    elif user.id in DEV_USERS:
-        text += "\n\nThis user is member of 'Heros Association'."
+        text += "\n\n• Disaster Level: God⚡"
+    elif  user . id  in  DEV_USERS :
+        text += "\n\n• Disaster Level: Master👨‍🏫"
+        disaster_level_present = True
     elif user.id in DRAGONS:
-        text += "\n\nThe Disaster level of this person is 'Dragon'."
-    elif user.id in DEMONS:
-        text += "\n\nThe Disaster level of this person is 'Demon'."
+        text += "\n\n• Disaster Level: Dragon🐉"
+        disaster_level_present = True
+    elif  user . id  in  DEMONS :
+        text += "\n\n• Disaster Level: Demon😈"
+        disaster_level_present = True
     elif user.id in TIGERS:
-        text += "\n\nThe Disaster level of this person is 'Tiger'."
-    elif user.id in WOLVES:
-        text += "\n\nThe Disaster level of this person is 'Wolf'."
-    elif user.id == 5561111332:
-        text += "\n\nSenorita Is Girlfriend Of @Its_IZ_PRINCE_xD."
+        text += "\n\n• Disaster Level: Tiger🐯"
+        disaster_level_present = True
+    elif  user _ id  in  WOLVES :
+        text += "\n\n• Disaster Level: Wolf🦊"
+        disaster_level_present = True
 
     try:
         user_member = chat.get_member(user.id)
