@@ -7,11 +7,11 @@ from NekoRobot import NEKO_PTB
 from NekoRobot.modules.disable import MessageHandler
 
 OWO = (
-    "*Chizuru pats {} on the head.",
+    "*Nezuko pats {} on the head.",
     "*gently rubs {}'s head*.",
-    "*Chizuru mofumofus {}'s head*",
-    "*Chizuru messes up {}'s head*",
-    "*Chizuru intensly rubs {}'s head*",
+    "*Nezuko mofumofus {}'s head*",
+    "*Nezuko messes up {}'s head*",
+    "*Nezuko intensly rubs {}'s head*",
     "*{}'s waifu pats their head*",
     "*{}'s got free headpats*",
     "No pats for {}!",
@@ -120,14 +120,14 @@ def sleep(update, context):
         msg.reply_video(sleepme)
 
 
-KISS_HANDLER = MessageHandler(Filters.regex("(?i)Chizuru kiss"), kiss, run_async=True)
-BLUSH_HANDLER = MessageHandler(Filters.regex("(?i)Chizuru blush"), blush, run_async=True)
-PAT_HANDLER = MessageHandler(Filters.regex("(?i)Chizuru pat"), pat, run_async=True)
-HUG_HANDLER = MessageHandler(Filters.regex("(?i)Chizuru hug"), hug, run_async=True)
-SLAP_HANDLER = MessageHandler(Filters.regex("(?i)Chizuru slap"), slap, run_async=True)
-CUTE_HANDLER = MessageHandler(Filters.regex("(?i)Chizuru cute"), cute, run_async=True)
+KISS_HANDLER = MessageHandler(Filters.regex("(?i)Nezuko kiss"), kiss, run_async=True)
+BLUSH_HANDLER = MessageHandler(Filters.regex("(?i)Nezuko blush"), blush, run_async=True)
+PAT_HANDLER = MessageHandler(Filters.regex("(?i)Nezuko pat"), pat, run_async=True)
+HUG_HANDLER = MessageHandler(Filters.regex("(?i)Nezuko hug"), hug, run_async=True)
+SLAP_HANDLER = MessageHandler(Filters.regex("(?i)Nezuko slap"), slap, run_async=True)
+CUTE_HANDLER = MessageHandler(Filters.regex("(?i)Nezuko cute"), cute, run_async=True)
 SLEEP_HANDLER = MessageHandler(
-    Filters.regex("(Chizuru sleep|sleep)"), sleep, run_async=True
+    Filters.regex("(Nezuko sleep|sleep)"), sleep, run_async=True
 )
 
 NEKO_PTB.add_handler(KISS_HANDLER)
