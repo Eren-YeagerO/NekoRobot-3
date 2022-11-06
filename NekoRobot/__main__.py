@@ -157,11 +157,11 @@ HELP_STRINGS = """
 """
 
 GROUP_START_IMG = (
-    "https://te.legra.ph/file/5f272dc498e4cf91faf92.jpg",
-    "https://te.legra.ph/file/9d8190aba9ac3421af488.jpg",
-    "https://te.legra.ph/file/5b1ce336f0c0216224040.jpg",
-    "https://te.legra.ph/file/f1f67047d973f3aea4004.jpg",
-    "https://te.legra.ph/file/c2526c05d65fd2fbfa58b.jpg",
+    "https://telegra.ph/file/a048c4fa0bdb2738fff69.jpg",
+    "https://telegra.ph/file/a62029574186f318c6529.jpg",
+    "https://telegra.ph/file/da817befa131f7a5f533e.jpg",
+    "https://telegra.ph/file/7dcde6edba760c620e91f.jpg",
+    "https://telegra.ph/file/1368985b1a20870949673.jpg",
 )
 
 DONATE_STRING = """❂ I'm Free for Everyone ❂"""
