@@ -141,7 +141,7 @@ buttons = [
     [
         InlineKeyboardButton(text="📓 Commands", callback_data="help_back"),
         InlineKeyboardButton(
-            text="🚑Support", url="https://github.com/Awesome-Prince/NekoRobot-3.git"
+            text="🚑Support", url="WoFBotsSupport"
         ),
     ],
 ]
