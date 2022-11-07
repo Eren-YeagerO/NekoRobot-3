@@ -128,9 +128,17 @@ buttons = [
         )
     ],
     [
-        InlineKeyboardButton(text="📓 Commands", callback_data="help_back"),
+        InlineKeyboardButton(text="📓 Guidelines", callback_data="help_back"),
         InlineKeyboardButton(
-            text="🚑Support", url="https://t.me/WoFBotsSupport"
+            text="Source 🌐", url="https://github.com/Awesome-Prince/NekoRobot-3.git"
+        ),
+    ],
+    [
+        InlineKeyboardButton(
+            text="🚑 Support", url=f"https://telegram.dog/{SUPPORT_CHAT}"
+        ),
+        InlineKeyboardButton(
+            text="📢 Updates", url="https://telegram.dog/Programmer_Updates"
         ),
     ],
 ]
@@ -290,7 +298,7 @@ def start(update: Update, context: CallbackContext):
                         ),
                         InlineKeyboardButton(
                             text="📢 Updates",
-                            url="https://telegram.dog/WOFBotsUpdates",
+                            url="https://telegram.dog/Programmer_Updates",
                         ),
                     ]
                 ]
