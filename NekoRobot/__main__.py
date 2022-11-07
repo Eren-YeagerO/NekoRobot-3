@@ -141,7 +141,7 @@ buttons = [
     [
         InlineKeyboardButton(text="📓 Commands", callback_data="help_back"),
         InlineKeyboardButton(
-            text="🚑Support", url="WoFBotsSupport"
+            text="🚑Support", url="https://t.me/WoFBotsSupport"
         ),
     ],
 ]
