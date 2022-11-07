@@ -108,15 +108,24 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
+
+HELP_MSG = "Click The Button Below To Get Help Menu In Your Dm."
+START_MSG = "I'm Awake Already!\n<b>Haven't Slept Since:</b> <code>{}</code>"
+
+NEKO_STICKERS = (
+    "CAACAgUAAxkBAAIIW2NL5v9F9hUom4xmsgNYb63SEfZZAAIZBgACYAF5VIerYoMcSln8KgQ",
+    "CAACAgUAAxkBAAIIT2NL5tVmdAO3n1o3cp9Jic9LkqJvAAK7AgACoU3RVLpdwYfQPmS9KgQ",
+    "CAACAgUAAxkBAAIIUGNL5tVNd0rwdoMv-uDVcZ3hHgwlAAIwAwACP9jQVMv2AfU-DvBfKgQ",
+    "CAACAgUAAxkBAAIIUmNL5tUzCtvS5E-XR8h3tFMSqVu7AAIGAwACNZnYVOTUhlBiHTQGKgQ",
+    "CAACAgUAAxkBAAIIUWNL5tVBEQAB2gWLSq0ymEPeAj5kmQAC3QEAAuu92VSPj3UkCiNvfioE",
+)
+
 PM_START_TEXT = """
-────「 [{}](https://telegra.ph/file/9996ec2eafdef4692102d.jpg) 」────
+────「 [{}](https://telegra.ph/file/025c6a82cdd540878442f.jpg) 」────
 *Hola! {},*
-*Meow Meow, Don't Touch Me Without My Permission!*
+*➻ The Most Powerful Telegram Group Management Bot With Some Awesome And Useful Features.*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
-❍ *Uptime:* `{}`
-❍ `{}` *Users, Across* `{}` *Chats.*
-➖➖➖➖➖➖➖➖➖➖➖➖➖
-➛ Try The Guidelines Button Below To Know My Abilities ××
+➛ Click On The Help Button To Get Information About My Modules And Commands.
 """
 
 buttons = [
