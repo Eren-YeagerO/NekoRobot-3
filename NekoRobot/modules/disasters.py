@@ -545,15 +545,15 @@ Commands listed here only work for users with special access are mainly used for
 Group admins/group owners do not need these commands. 
 
  ╔ *List all special users:*
- •`/aranks`*:* Lists all A Rank Hunters
- •`/branks`*:* Lists all B Rank Hunters
- •`/cranks`*:* Lists all C Rank Hunters
- •`/dranks`*:* Lists all D Rank Hunters
- •`/sranks`*:* Lists all S Rank Hunters
- •`/addarank`*:* Adds a user to A Rank Hunter
- •`/addbrank`*:* Adds a user to B Rank Hunter
- •`/addcrank`*:* Adds a user to C Rank Hunter
- •`/adddrank`*:* Adds a user to D Rank Hunter
+ ❍ `/dragons`*:* Lists all Dragon disasters
+ ❍ `/demons`*:* Lists all Demon disasters
+ ❍ `/tigers`*:* Lists all Tigers disasters
+ ❍ `/wolves`*:* Lists all Wolf disasters
+ ❍ `/devs`*:* Lists all Dev members
+ ❍ `/adddragon`*:* Adds a user to Dragon
+ ❍ `/adddemon`*:* Adds a user to Demon
+ ❍ `/addtiger`*:* Adds a user to Tiger
+ ❍ `/addwolf`*:* Adds a user to Wolf
  ╚ `Add dev doesnt exist, devs should know how to add themselves`
 
  ╔ *Ping:*
@@ -630,34 +630,20 @@ Group admins/group owners do not need these commands.
 Visit @{SUPPORT_CHAT} for more information.
 """
 
-SUDO_HANDLER = CommandHandler(("addsudo", "addarank"), addsudo, run_async=True)
-SUPPORT_HANDLER = CommandHandler(("addsupport", "addbrank"), addsupport, run_async=True)
-TIGER_HANDLER = CommandHandler(("addtiger", "addcrank"), addtiger, run_async=True)
-WHITELIST_HANDLER = CommandHandler(
-    ("addwhitelist", "adddrank"), addwhitelist, run_async=True
-)
-UNSUDO_HANDLER = CommandHandler(
-    ("removesudo", "removearank"), removesudo, run_async=True
-)
-UNSUPPORT_HANDLER = CommandHandler(
-    ("removesupport", "removebrank"), removesupport, run_async=True
-)
-UNTIGER_HANDLER = CommandHandler(
-    ("removetiger", "removecrank"), removetiger, run_async=True
-)
-UNWHITELIST_HANDLER = CommandHandler(
-    ("removewhitelist", "removedrank"), removewhitelist, run_async=True
-)
+SUDO_HANDLER = CommandHandler(("addsudo", "adddragon"), addsudo)
+SUPPORT_HANDLER = CommandHandler(("addsupport", "adddemon"), addsupport)
+TIGER_HANDLER = CommandHandler(("addtiger"), addtiger)
+WHITELIST_HANDLER = CommandHandler(("addwhitelist", "addwolf"), addwhitelist)
+UNSUDO_HANDLER = CommandHandler(("removesudo", "removedragon"), removesudo)
+UNSUPPORT_HANDLER = CommandHandler(("removesupport", "removedemon"), removesupport)
+UNTIGER_HANDLER = CommandHandler(("removetiger"), removetiger)
+UNWHITELIST_HANDLER = CommandHandler(("removewhitelist", "removewolf"), removewhitelist)
 
-WHITELISTLIST_HANDLER = CommandHandler(
-    ["whitelistlist", "dranks"], whitelistlist, run_async=True
-)
-TIGERLIST_HANDLER = CommandHandler(["tigers", "cranks"], tigerlist, run_async=True)
-SUPPORTLIST_HANDLER = CommandHandler(
-    ["supportlist", "branks"], supportlist, run_async=True
-)
-SUDOLIST_HANDLER = CommandHandler(["sudolist", "aranks"], sudolist, run_async=True)
-DEVLIST_HANDLER = CommandHandler(["devlist", "sranks"], devlist, run_async=True)
+WHITELISTLIST_HANDLER = CommandHandler(["whitelistlist", "wolves"], whitelistlist)
+TIGERLIST_HANDLER = CommandHandler(["tigers"], tigerlist)
+SUPPORTLIST_HANDLER = CommandHandler(["supportlist", "demons"], supportlist)
+SUDOLIST_HANDLER = CommandHandler(["sudolist", "dragons"], sudolist)
+DEVLIST_HANDLER = CommandHandler(["devlist", "devs"], devlist)e
 
 NEKO_PTB.add_handler(SUDO_HANDLER)
 NEKO_PTB.add_handler(SUPPORT_HANDLER)
