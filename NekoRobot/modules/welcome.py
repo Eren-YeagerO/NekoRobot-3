@@ -70,7 +70,6 @@ VERIFIED_USER_WAITLIST = {}
 NEKO_IMG = "https://telegra.ph/file/2f07edb1ff6d01bc079f6.mp4"
 NEKO = "https://telegra.ph/file/677cd21f71a3c98edac98.mp4"
 NEKO_VID = "https://telegra.ph/file/4c0dee5f3f55eb5dc312d.mp4"
-WAIFUS_IMG = "https://telegra.ph/file/9cb0905da0c871eba2e1e.mp4"
 
 
 # do not async
