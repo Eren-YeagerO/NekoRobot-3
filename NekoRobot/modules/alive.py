@@ -71,7 +71,7 @@ async def hmm(yes):
     current_time = datetime.utcnow()
     uptime_sec = (current_time - START_TIME).total_seconds()
     uptime = await _human_time_duration(int(uptime_sec))
-    NekoX = f"**👋Hey [{yes.sender.first_name}](tg://user?id={yes.sender.id})\n💫I'm {BOT_NAME}\n🥀I'm Working Perfectly **\n\n"
+    NekoX = f"**👋Hey [{yes.sender.first_name}](tg://user?id={yes.sender.id})\n\n💫I'm {BOT_NAME}\n🥀I'm Working Perfectly **\n\n"
     NekoX += f"**⚡️My Uptime :** `{uptime}`\n\n"
     NekoX += f"**🐍Python-telegram-bot Version :** `{ptb}`\n\n"
     NekoX += f"**👑My Creator:** [𝒍𝒆𝒗𝒊](https://t.me/HssLevii)"
@@ -81,4 +81,4 @@ async def hmm(yes):
             Button.url("🚑Support", f"https://t.me/{SUPPORT_CHAT}"),
         ]
     ]
-    await neko.send_file(yes.chat_id, file="https://telegra.ph/file/331bebbf1d25ebc41d3e7.mp4",caption=NekoX, buttons=BUTTON)
+    await neko.send_file(yes.chat_id, file="https://telegra.ph/file/c5e1df176997cf893533e.mp4",caption=NekoX, buttons=BUTTON)
