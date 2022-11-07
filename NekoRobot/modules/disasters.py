@@ -643,7 +643,7 @@ WHITELISTLIST_HANDLER = CommandHandler(["whitelistlist", "wolves"], whitelistlis
 TIGERLIST_HANDLER = CommandHandler(["tigers"], tigerlist)
 SUPPORTLIST_HANDLER = CommandHandler(["supportlist", "demons"], supportlist)
 SUDOLIST_HANDLER = CommandHandler(["sudolist", "dragons"], sudolist)
-DEVLIST_HANDLER = CommandHandler(["devlist", "devs"], devlist)e
+DEVLIST_HANDLER = CommandHandler(["devlist", "devs"], devlist)
 
 NEKO_PTB.add_handler(SUDO_HANDLER)
 NEKO_PTB.add_handler(SUPPORT_HANDLER)
