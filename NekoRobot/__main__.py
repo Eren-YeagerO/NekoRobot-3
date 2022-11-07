@@ -244,7 +244,7 @@ def start(update: Update, context: CallbackContext):
                         [
                             [
                                 InlineKeyboardButton(
-                                    text="⥀Back⥁", callback_data="help_back"
+                                    text="[► Back ◄]", callback_data="help_back"
                                 )
                             ]
                         ]
@@ -363,10 +363,10 @@ def help_button(update: Update, context: CallbackContext) -> None:
                     [
                         [
                             InlineKeyboardButton(
-                                text="⥀Back⥁", callback_data="help_back"
+                                text="[► Back ◄]", callback_data="help_back"
                             ),
                             InlineKeyboardButton(
-                                text="⥁Support⥁", url=f"https://t.me/{SUPPORT_CHAT}"
+                                text="[► Support ◄]", url=f"https://t.me/{SUPPORT_CHAT}"
                             ),
                         ]
                     ]
@@ -416,7 +416,7 @@ def neko_callback_data(update: Update, context: CallbackContext) -> None:
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="⥁Back⥁", callback_data="neko_back")]]
+                [[InlineKeyboardButton(text="[► Back ◄]", callback_data="neko_back")]]
             ),
         )
     elif query.data == "neko_back":
@@ -468,7 +468,7 @@ def get_help(update: Update, context: CallbackContext) -> None:
             chat.id,
             text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="⥁Back⥁", callback_data="help_back")]]
+                [[InlineKeyboardButton(text="[► Back ◄]", callback_data="help_back")]]
             ),
         )
 
