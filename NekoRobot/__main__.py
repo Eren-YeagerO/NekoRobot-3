@@ -115,7 +115,7 @@ START_MSG = "I'm Awake Already!\n<b>Haven't Slept Since:</b> <code>{}</code>"
 PM_START_TEXT = """
 ────「 [{}](https://telegra.ph/file/025c6a82cdd540878442f.jpg) 」────
 *Hola! {},*
-*➻ The Most Powerful Telegram Group Management Bot With Some Awesome And Useful Features.*
+*The Most Powerful Telegram Group Management Bot With Some Awesome And Useful Features.*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
 ➛ Click On The Help Button To Get Information About My Modules And Commands.
 """
