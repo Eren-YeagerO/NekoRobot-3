@@ -665,13 +665,13 @@ def donate(update: Update, context: CallbackContext) -> None:
             )
 
             update.effective_message.reply_text(
-                text="I'm free for everyone❤️\njust donate by subs channel, Don't forget to join the support group.",
+                text="Adding Me To Your Groups Is Donation For Me Though I Would Appreciate If You Join My Creator's Group.",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                text="📢 Updates",
-                                url="https://telegram.dog/Programmer_Updates",
+                                text="WOF🕊",
+                                url="https://telegram.dog/WingsOfFreedom2",
                             ),
                             InlineKeyboardButton(
                                 text="🚑 Support",
