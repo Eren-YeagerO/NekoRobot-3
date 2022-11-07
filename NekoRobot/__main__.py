@@ -290,7 +290,7 @@ def start(update: Update, context: CallbackContext):
                         ),
                         InlineKeyboardButton(
                             text="📢 Updates",
-                            url="https://telegram.dog/hsslevii",
+                            url="https://telegram.dog/WOFBotsUpdates",
                         ),
                     ]
                 ]
