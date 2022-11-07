@@ -71,38 +71,13 @@ async def hmm(yes):
     current_time = datetime.utcnow()
     uptime_sec = (current_time - START_TIME).total_seconds()
     uptime = await _human_time_duration(int(uptime_sec))
-    NekoX = f"** ♡ Hey [{yes.sender.first_name}](tg://user?id={yes.sender.id}) I'm {BOT_NAME} **\n\n"
-    NekoX += f"**♡ My Uptime :** `{uptime}`\n\n"
-    NekoX += f"**♡ Python-telegram-bot Version :** `{ptb}`\n\n"
-    NekoX += f"**♡ Telethon Version :** `{tlhver}`\n\n"
-    NekoX += f"**♡ Pyrogram Version :** `{pyrover}`\n\n"
-    NekoX += "**👑My Creator:** [𝒍𝒆𝒗𝒊](https://t.me/HssLevii) "
-    NekoX += f"Thanks For Adding Me In {yes.chat.title}"
+    NekoX = f"**👋Hey [{yes.sender.first_name}](tg://user?id={yes.sender.id})\n💫I'm {BOT_NAME}\n🥀I'm Working Perfectly **\n\n"
+    NekoX += f"**⚡️My Uptime :** `{uptime}`\n\n"
+    NekoX += f"**🐍Python-telegram-bot Version :** `{ptb}`\n\n"
+    NekoX += f"**👑My Creator:** [𝒍𝒆𝒗𝒊](https://t.me/HssLevii)"
     BUTTON = [
         [
-            Button.url("【► Help ◄】", f"https://t.me/{BOT_USERNAME}?start=help"),
-            Button.url("【► Support ◄】", f"https://t.me/{SUPPORT_CHAT}"),
+            Button.url("🌟Help", f"https://t.me/{BOT_USERNAME}?start=help"),
+            Button.url("🚑Support", f"https://t.me/{SUPPORT_CHAT}"),
         ]
     ]
-    on = await neko.send_file(yes.chat_id, file=file2, caption=NekoX, buttons=BUTTON)
-
-    await asyncio.sleep(edit_time)
-    ok = await neko.edit_message(yes.chat_id, on, file=file3, buttons=BUTTON)
-
-    await asyncio.sleep(edit_time)
-    ok2 = await neko.edit_message(yes.chat_id, ok, file=file4, buttons=BUTTON)
-
-    await asyncio.sleep(edit_time)
-    ok3 = await neko.edit_message(yes.chat_id, ok2, file=file1, buttons=BUTTON)
-
-    await asyncio.sleep(edit_time)
-    ok4 = await neko.edit_message(yes.chat_id, ok3, file=file2, buttons=BUTTON)
-
-    await asyncio.sleep(edit_time)
-    ok5 = await neko.edit_message(yes.chat_id, ok4, file=file1, buttons=BUTTON)
-
-    await asyncio.sleep(edit_time)
-    ok6 = await neko.edit_message(yes.chat_id, ok5, file=file3, buttons=BUTTON)
-
-    await asyncio.sleep(edit_time)
-    ok7 = await neko.edit_message(yes.chat_id, ok6, file=file4, buttons=BUTTON)
