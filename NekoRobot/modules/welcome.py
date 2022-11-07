@@ -245,28 +245,9 @@ def new_member(update: Update, context: CallbackContext):
 
             # Welcome yourself
             elif new_mem.id == bot.id:
-                update.effective_message.reply_photo(
-                    WAIFUS_IMG,
-                    caption="Hey {}, I'm {}! Thank you for adding me to {}\n"
-                    "Join support and channel update with clicking button below!".format(
-                        user.first_name, context.bot.first_name, chat.title
-                    ),
+                update.effective_message.reply_text(
+                    "❤️ Thanks for adding me to this group!",
                     reply_to_message_id=reply,
-                    parse_mode=ParseMode.MARKDOWN,
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton(
-                                    text="Support🚑",
-                                    url=f"https://t.me/ProgrammerSupport",
-                                ),
-                                InlineKeyboardButton(
-                                    text="Updates🛰️",
-                                    url="https://t.me/Programmer_Updates",
-                                ),
-                            ]
-                        ]
-                    ),
                 )
                 continue
 
