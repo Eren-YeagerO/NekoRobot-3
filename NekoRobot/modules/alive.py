@@ -27,10 +27,8 @@ import asyncio
 import datetime
 from datetime import datetime
 
-from pyrogram import __version__ as pyrover
 from telegram import __version__ as ptb
 from telethon import Button
-from telethon import __version__ as tlhver
 
 from NekoRobot import BOT_NAME, BOT_USERNAME, SUPPORT_CHAT
 from NekoRobot import tbot as neko
@@ -78,7 +76,7 @@ async def hmm(yes):
     NekoX += f"**♡ Python-telegram-bot Version :** `{ptb}`\n\n"
     NekoX += f"**♡ Telethon Version :** `{tlhver}`\n\n"
     NekoX += f"**♡ Pyrogram Version :** `{pyrover}`\n\n"
-    NekoX += "**♡ My Master :** [LovelyPrince](https://t.me/Its_IZ_PRINCE_xD) "
+    NekoX += "**👑My Creator:** [𝒍𝒆𝒗𝒊](https://t.me/HssLevii) "
     NekoX += f"Thanks For Adding Me In {yes.chat.title}"
     BUTTON = [
         [
