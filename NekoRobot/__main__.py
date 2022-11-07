@@ -117,9 +117,6 @@ PM_START_TEXT = """
 *Hola! {},*
 *➻ The Most Powerful Telegram Group Management Bot With Some Awesome And Useful Features.*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
-❍ *Uptime:* `{}`
-❍ `{}` *Users, Across* `{}` *Chats.*
-
 ➛ Click On The Help Button To Get Information About My Modules And Commands.
 """
 
