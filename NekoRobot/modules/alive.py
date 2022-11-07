@@ -81,3 +81,4 @@ async def hmm(yes):
             Button.url("🚑Support", f"https://t.me/{SUPPORT_CHAT}"),
         ]
     ]
+     on = await neko.send_file(yes.chat_id, file="https://telegra.ph/file/331bebbf1d25ebc41d3e7.mp4",caption=NekoX, buttons=BUTTON)
