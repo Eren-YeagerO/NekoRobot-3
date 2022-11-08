@@ -117,8 +117,6 @@ PM_START_TEXT = """
 *Hola! {},*
 *➻ The Most Powerful Telegram Group Management Bot With Some Awesome And Useful Features.*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
-❍ `{}` *Users, Across* `{}` *Chats.*
-➖➖➖➖➖➖➖➖➖➖➖➖➖
 ➛ Click On The Help Button To Get Information About My Modules And Commands.
 """
 
@@ -148,11 +146,11 @@ HELP_STRINGS = """
 """
 
 GROUP_START_IMG = (
-    "https://te.legra.ph/file/5f272dc498e4cf91faf92.jpg",
-    "https://te.legra.ph/file/9d8190aba9ac3421af488.jpg",
-    "https://te.legra.ph/file/5b1ce336f0c0216224040.jpg",
-    "https://te.legra.ph/file/f1f67047d973f3aea4004.jpg",
-    "https://te.legra.ph/file/c2526c05d65fd2fbfa58b.jpg",
+    "https://telegra.ph/file/a048c4fa0bdb2738fff69.jpg",
+    "https://telegra.ph/file/a62029574186f318c6529.jpg",
+    "https://telegra.ph/file/da817befa131f7a5f533e.jpg",
+    "https://telegra.ph/file/7dcde6edba760c620e91f.jpg",
+    "https://telegra.ph/file/1368985b1a20870949673.jpg",
 )
 
 DONATE_STRING = """❂ I'm Free for Everyone ❂"""
@@ -246,7 +244,7 @@ def start(update: Update, context: CallbackContext):
                         [
                             [
                                 InlineKeyboardButton(
-                                    text="[► Back ◄]", callback_data="help_back"
+                                    text="⥀Back⥁", callback_data="help_back"
                                 )
                             ]
                         ]
@@ -271,8 +269,6 @@ def start(update: Update, context: CallbackContext):
                 PM_START_TEXT.format(
                     escape_markdown(context.bot.first_name),
                     escape_markdown(first_name),
-                    sql.num_users(),
-                    sql.num_chats(),
                 ),
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
@@ -292,7 +288,7 @@ def start(update: Update, context: CallbackContext):
                         ),
                         InlineKeyboardButton(
                             text="📢 Updates",
-                            url="https://telegram.dog/Programmer_Updates",
+                            url="https://telegram.dog/WOFBotsUpdates",
                         ),
                     ]
                 ]
@@ -365,10 +361,10 @@ def help_button(update: Update, context: CallbackContext) -> None:
                     [
                         [
                             InlineKeyboardButton(
-                                text="[► Back ◄]", callback_data="help_back"
+                                text="⥀Back⥁", callback_data="help_back"
                             ),
                             InlineKeyboardButton(
-                                text="[► Support ◄]", url=f"https://t.me/{SUPPORT_CHAT}"
+                                text="⥁Support⥁", url=f"https://t.me/{SUPPORT_CHAT}"
                             ),
                         ]
                     ]
@@ -418,7 +414,7 @@ def neko_callback_data(update: Update, context: CallbackContext) -> None:
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="[► Back ◄]", callback_data="neko_back")]]
+                [[InlineKeyboardButton(text="⥁Back⥁", callback_data="neko_back")]]
             ),
         )
     elif query.data == "neko_back":
@@ -427,8 +423,6 @@ def neko_callback_data(update: Update, context: CallbackContext) -> None:
             PM_START_TEXT.format(
                 escape_markdown(context.bot.first_name),
                 escape_markdown(first_name),
-                sql.num_users(),
-                sql.num_chats(),
             ),
             reply_markup=InlineKeyboardMarkup(buttons),
             parse_mode=ParseMode.MARKDOWN,
@@ -469,7 +463,7 @@ def get_help(update: Update, context: CallbackContext) -> None:
             chat.id,
             text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="[► Back ◄]", callback_data="help_back")]]
+                [[InlineKeyboardButton(text="⥁Back⥁", callback_data="help_back")]]
             ),
         )
 
@@ -632,9 +626,9 @@ def donate(update: Update, context: CallbackContext) -> None:
             DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True
         )
 
-        if OWNER_ID != 5629305049 and DONATION_LINK:
+        if OWNER_ID != 5667156680 and DONATION_LINK:
             update.effective_message.reply_text(
-                f"You can also donate to the person currently running me [here]({DONATION_LINK})",
+                f"Adding Me To Your Groups Is Donation For Me Though I Would Appreciate If You Join My Creator's Group @WingsOfFreedom2",
                 parse_mode=ParseMode.MARKDOWN,
             )
 
@@ -650,12 +644,12 @@ def donate(update: Update, context: CallbackContext) -> None:
             )
 
             update.effective_message.reply_text(
-                text="I'm free for everyone❤️\njust donate by subs channel, Don't forget to join the support group.",
+                text="Adding Me To Your Groups Is Donation For Me Though I Would Appreciate If You Join My Creator's Group.",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                text="📢 Updates",
+                                text="📣 Updates",
                                 url="https://telegram.dog/WOFBotsUpdates",
                             ),
                             InlineKeyboardButton(
