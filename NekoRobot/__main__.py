@@ -115,6 +115,7 @@ START_MSG = "I'm Awake Already!\n<b>Haven't Slept Since:</b> <code>{}</code>"
 PM_START_TEXT = """
 ────「 [{}](https://telegra.ph/file/025c6a82cdd540878442f.jpg) 」────
 *Hola! {},*
+*๏ This is* {} !
 *➻ The Most Powerful Telegram Group Management Bot With Some Awesome And Useful Features.*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
 ➛ Click On The Help Button To Get Information About My Modules And Commands.
@@ -264,18 +265,13 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
             else:
-            first_name = update.effective_user.first_name
-            update.effective_message.reply_text(
-                PM_START_TEXT.format(
-                    escape_markdown(context.bot.first_name),
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),                        
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-            )
+                first_name = update.effective_user.first_name
+                update.effective_message.reply_text(
+                    PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
+                    reply_markup=InlineKeyboardMarkup(buttons),
+                    parse_mode=ParseMode.MARKDOWN,
+                    timeout=60,
+                )
     else:
         update.effective_message.reply_photo(
             random.choice(GROUP_START_IMG),
@@ -422,17 +418,11 @@ def neko_callback_data(update: Update, context: CallbackContext) -> None:
     elif query.data == "neko_back":
         first_name = update.effective_user.first_name
         query.message.edit_text(
-            PM_START_TEXT.format(
-                escape_markdown(context.bot.first_name),
-                escape_markdown(first_name),
-                escape_markdown(uptime),
-                sql.num_users(),
-                sql.num_chats(),
-            ),
-            reply_markup=InlineKeyboardMarkup(buttons),
-            parse_mode=ParseMode.MARKDOWN,
-            timeout=60,
-            disable_web_page_preview=False,
+             PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
+             reply_markup=InlineKeyboardMarkup(buttons),
+             parse_mode=ParseMode.MARKDOWN,
+             timeout=60,
+             disable_web_page_preview=False,
         )
 
 
