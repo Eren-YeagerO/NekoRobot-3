@@ -117,7 +117,6 @@ PM_START_TEXT = """
 *Hola! {},*
 *➻ The Most Powerful Telegram Group Management Bot With Some Awesome And Useful Features.*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
-❍ *Uptime:* `{}`
 ❍ `{}` *Users, Across* `{}` *Chats.*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
 ➛ Click On The Help Button To Get Information About My Modules And Commands.
@@ -272,7 +271,6 @@ def start(update: Update, context: CallbackContext):
                 PM_START_TEXT.format(
                     escape_markdown(context.bot.first_name),
                     escape_markdown(first_name),
-                    escape_markdown(uptime),
                     sql.num_users(),
                     sql.num_chats(),
                 ),
@@ -659,7 +657,7 @@ def donate(update: Update, context: CallbackContext) -> None:
                         [
                             InlineKeyboardButton(
                                 text="📢 Updates",
-                                url="https://telegram.dog/Programmer_Updates",
+                                url="https://telegram.dog/WOFBotsUpdates",
                             ),
                             InlineKeyboardButton(
                                 text="🚑 Support",
