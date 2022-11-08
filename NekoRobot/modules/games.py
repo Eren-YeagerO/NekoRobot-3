@@ -44,10 +44,10 @@ DARE_HANDLER = DisableAbleCommandHandler("dare", dare)
 TORD_HANDLER = DisableAbleCommandHandler("tord", tord)
 WYR_HANDLER = DisableAbleCommandHandler("rather", wyr)
 
-dispatcher.add_handler(TRUTH_HANDLER)
-dispatcher.add_handler(DARE_HANDLER)
-dispatcher.add_handler(TORD_HANDLER)
-dispatcher.add_handler(WYR_HANDLER)
+NEKO_PTB.add_handler(TRUTH_HANDLER)
+NEKO_PTB.add_handler(DARE_HANDLER)
+NEKO_PTB.add_handler(TORD_HANDLER)
+NEKO_PTB.add_handler(WYR_HANDLER)
 
 __mod_name__ = "Games"
 __command_list__ = [
