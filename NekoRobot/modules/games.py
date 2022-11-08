@@ -7,7 +7,7 @@ from telegram.ext import CallbackContext, run_async
 from telegram.error import BadRequest
 
 import NekoRobot.modules.game_strings as game_strings
-from NekoRobot import dispatcher
+from NekoRobot import NEKO_PTB
 from NekoRobot.modules.disable import DisableAbleCommandHandler
 from NekoRobot.modules.helper_funcs.chat_status import (is_user_admin)
 from NekoRobot.modules.helper_funcs.extraction import extract_user
