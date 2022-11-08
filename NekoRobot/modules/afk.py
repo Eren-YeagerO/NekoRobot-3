@@ -20,8 +20,6 @@ from NekoRobot.modules.helper_funcs.readable_time import get_readable_time
 AFK_GROUP = 7
 AFK_REPLY_GROUP = 8
 
-AFKVID = "https://telegra.ph/file/c49829f9f5d65947cbc7e.mp4"
-
 
 def afk(update, context):
     args = update.effective_message.text.split(None, 1)
@@ -37,8 +35,7 @@ def afk(update, context):
     REDIS.set(f'afk_time_{update.effective_user.id}', start_afk_time)
     fname = update.effective_user.first_name
     try:
-        update.effective_message.reply_video(
-            AFKVID,caption="Byii Byiii {}!".format(fname))
+        update.effective_message.reply_text(f"{fname} is now away!{notice}")
     except BadRequest:
         pass
 
