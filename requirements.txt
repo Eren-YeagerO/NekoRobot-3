@@ -47,6 +47,7 @@ html2text
 pythonping
 html_telegraph_poster
 pytube
+redis
 youtube-search-python
 instantmusic
 PyLyrics
