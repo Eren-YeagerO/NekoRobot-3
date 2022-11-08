@@ -22,26 +22,6 @@ from NekoRobot.modules.helper_funcs.extraction import extract_user
 GIF_ID = "CAACAgEAAxkBAAICj2NpJ4E7mOMVU8ME7ye5MMibRpCCAAI4AQAC8zHRR1jDdyQFP0AfKwQ"
 
 
-@register(pattern="^/truth ?(.*)")
-async def _(td):
-    try:
-        resp = requests.get("https://api.safone.tech/truth").json()
-        results = f"{resp['truth']}"
-        return await td.reply(results)
-    except Exception:
-        await td.reply(f"Error Report @{SUPPORT_CHAT}")
-
-
-@register(pattern="^/dare ?(.*)")
-async def _(dr):
-    try:
-        resp = requests.get("https://api.safone.tech/dare").json()
-        results = f"{resp['dare']}"
-        return await dr.reply(results)
-    except Exception:
-        await dr.reply(f"Error Report @{SUPPORT_CHAT}")
-
-
 @register(pattern="^/fact ?(.*)")
 async def _(dr):
     try:
