@@ -41,7 +41,6 @@ from telegram import (
 from telegram.ext import CallbackContext, CallbackQueryHandler
 from telegram.utils.helpers import mention_html
 
-from Gif.covert import convert_gif
 from NekoRobot import NEKO_PTB
 from NekoRobot import tbot as bot
 from NekoRobot.modules.disable import DisableAbleCommandHandler
