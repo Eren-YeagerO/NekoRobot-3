@@ -121,14 +121,11 @@ NEKO_STICKERS = (
 )
 
 PM_START_TEXT = """
-────「 [{}](https://telegra.ph/file/9996ec2eafdef4692102d.jpg) 」────
+────「 [{}](https://telegra.ph/file/025c6a82cdd540878442f.jpg) 」────
 *Hola! {},*
-*Meow Meow, Don't Touch Me Without My Permission!*
+*➻ The Most Powerful Telegram Group Management Bot With Some Awesome And Useful Features.*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
-❍ *Uptime:* `{}`
-❍ `{}` *Users, Across* `{}` *Chats.*
-➖➖➖➖➖➖➖➖➖➖➖➖➖
-➛ Try The Guidelines Button Below To Know My Abilities ××
+➛ Click On The Help Button To Get Information About My Modules And Commands.
 """
 
 buttons = [
@@ -139,17 +136,9 @@ buttons = [
         )
     ],
     [
-        InlineKeyboardButton(text="📓 Guidelines", callback_data="help_back"),
+        InlineKeyboardButton(text="📓 Commands", callback_data="help_back"),
         InlineKeyboardButton(
-            text="Source 🌐", url="https://github.com/Awesome-Prince/NekoRobot-3.git"
-        ),
-    ],
-    [
-        InlineKeyboardButton(
-            text="🚑 Support", url=f"https://telegram.dog/{SUPPORT_CHAT}"
-        ),
-        InlineKeyboardButton(
-            text="📢 Updates", url="https://telegram.dog/Programmer_Updates"
+            text="🚑Support", url="https://t.me/WoFBotsSupport"
         ),
     ],
 ]
@@ -165,11 +154,11 @@ HELP_STRINGS = """
 """
 
 GROUP_START_IMG = (
-    "https://te.legra.ph/file/5f272dc498e4cf91faf92.jpg",
-    "https://te.legra.ph/file/9d8190aba9ac3421af488.jpg",
-    "https://te.legra.ph/file/5b1ce336f0c0216224040.jpg",
-    "https://te.legra.ph/file/f1f67047d973f3aea4004.jpg",
-    "https://te.legra.ph/file/c2526c05d65fd2fbfa58b.jpg",
+    "https://telegra.ph/file/a048c4fa0bdb2738fff69.jpg",
+    "https://telegra.ph/file/a62029574186f318c6529.jpg",
+    "https://telegra.ph/file/da817befa131f7a5f533e.jpg",
+    "https://telegra.ph/file/7dcde6edba760c620e91f.jpg",
+    "https://telegra.ph/file/1368985b1a20870949673.jpg",
 )
 
 DONATE_STRING = """❂ I'm Free for Everyone ❂"""
@@ -263,7 +252,7 @@ def start(update: Update, context: CallbackContext):
                         [
                             [
                                 InlineKeyboardButton(
-                                    text="[► Back ◄]", callback_data="help_back"
+                                    text="⥀Back⥁", callback_data="help_back"
                                 )
                             ]
                         ]
@@ -281,6 +270,12 @@ def start(update: Update, context: CallbackContext):
 
             elif args[0][1:].isdigit() and "rules" in IMPORTED:
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
+                  
+         else:
+            update.effective_message.reply_sticker(
+                random.choice(NEKO_STICKERS),
+                timeout=60,
+            )
 
             first_name = update.effective_user.first_name
             update.effective_message.reply_text(
@@ -309,7 +304,7 @@ def start(update: Update, context: CallbackContext):
                         ),
                         InlineKeyboardButton(
                             text="📢 Updates",
-                            url="https://telegram.dog/Programmer_Updates",
+                            url="https://telegram.dog/WOFBotsUpdates",
                         ),
                     ]
                 ]
@@ -382,10 +377,10 @@ def help_button(update: Update, context: CallbackContext) -> None:
                     [
                         [
                             InlineKeyboardButton(
-                                text="[► Back ◄]", callback_data="help_back"
+                                text="⥀Back⥁", callback_data="help_back"
                             ),
                             InlineKeyboardButton(
-                                text="[► Support ◄]", url=f"https://t.me/{SUPPORT_CHAT}"
+                                text="⥁Support⥁", url=f"https://t.me/{SUPPORT_CHAT}"
                             ),
                         ]
                     ]
@@ -435,7 +430,7 @@ def neko_callback_data(update: Update, context: CallbackContext) -> None:
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="[► Back ◄]", callback_data="neko_back")]]
+                [[InlineKeyboardButton(text="⥁Back⥁", callback_data="neko_back")]]
             ),
         )
     elif query.data == "neko_back":
@@ -487,7 +482,7 @@ def get_help(update: Update, context: CallbackContext) -> None:
             chat.id,
             text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="[► Back ◄]", callback_data="help_back")]]
+                [[InlineKeyboardButton(text="⥁Back⥁", callback_data="help_back")]]
             ),
         )
 
@@ -650,9 +645,9 @@ def donate(update: Update, context: CallbackContext) -> None:
             DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True
         )
 
-        if OWNER_ID != 5629305049 and DONATION_LINK:
+        if OWNER_ID != 5667156680 and DONATION_LINK:
             update.effective_message.reply_text(
-                f"You can also donate to the person currently running me [here]({DONATION_LINK})",
+                f"Adding Me To Your Groups Is Donation For Me Though I Would Appreciate If You Join My Creator's Group @WingsOfFreedom2",
                 parse_mode=ParseMode.MARKDOWN,
             )
 
@@ -668,13 +663,13 @@ def donate(update: Update, context: CallbackContext) -> None:
             )
 
             update.effective_message.reply_text(
-                text="I'm free for everyone❤️\njust donate by subs channel, Don't forget to join the support group.",
+                text="Adding Me To Your Groups Is Donation For Me Though I Would Appreciate If You Join My Creator's Group.",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                text="📢 Updates",
-                                url="https://telegram.dog/Programmer_Updates",
+                                text="WOF🕊",
+                                url="https://telegram.dog/WingsOfFreedom2",
                             ),
                             InlineKeyboardButton(
                                 text="🚑 Support",
