@@ -45,7 +45,7 @@ def ReplyCheck(message: Message):
 
 
 infotext = (
-    "**[{full_name}](tg://user?id={user_id})**\n"
+    " * [{full_name}](tg://user?id={user_id})\n"
     " * UserID: `{user_id}`\n"
     " * First Name: `{first_name}`\n"
     " * Last Name: `{last_name}`\n"
