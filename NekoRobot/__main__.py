@@ -117,8 +117,8 @@ PM_START_TEXT = """
 *Hola! {},*
 *๏ This is Nezuko !*
 *➻ The Most Powerful Telegram Group Management Bot With Some Awesome And Useful Features.*
-➖➖➖➖➖➖➖➖➖➖➖➖➖
-*➛ Click On The Help Button To Get Information About My Modules And Commands.*
+───────────────────────
+*➛ Click On The 📚 Commands Button To Get Information About My Modules And Commands.*
 """
 
 buttons = [
@@ -131,7 +131,7 @@ buttons = [
     [
         InlineKeyboardButton(text="📓 Commands", callback_data="help_back"),
         InlineKeyboardButton(
-            text="🚑Support", url="https://t.me/WoFBotsSupport"
+            text="🚑 Support", url="https://t.me/WoFBotsSupport"
         ),
     ],
 ]
