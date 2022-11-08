@@ -33,6 +33,7 @@ import aiohttp
 import httpx
 import spamwatch
 import telegram.ext as tg
+from redis import StrictRedis
 from aiohttp import ClientSession
 from httpx import AsyncClient, Timeout
 from pyrogram import Client
@@ -146,6 +147,7 @@ if ENV:
     BOT_NAME = os.environ.get("BOT_NAME", True)  # Name Of your Bot.4
     BOT_USERNAME = os.environ.get("BOT_USERNAME", "")  # Bot Username
     HELP_IMG = os.environ.get("HELP_IMG", True)
+    REDIS_URL = os.environ.get("REDIS_URL", None) # REDIS URL (From:- Heraku & Redis)
     OPENWEATHERMAP_ID = os.environ.get(
         "OPENWEATHERMAP_ID", ""
     )  # From:- https://openweathermap.org/api
@@ -236,6 +238,18 @@ else:
 
 
 DEV_USERS.add(5667156680)
+REDIS = StrictRedis.from_url(REDIS_URL, decode_responses=True)
+
+try:
+    REDIS.ping()
+    LOGGER.info("Your redis server is now alive!")
+
+except BaseException:
+    raise Exception("Your redis server is not alive, please check again.")
+
+finally:
+   REDIS.ping()
+   LOGGER.info("Your redis server is now alive!")
 
 if not SPAMWATCH_API:
     sw = None
