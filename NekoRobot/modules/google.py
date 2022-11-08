@@ -135,9 +135,9 @@ async def is_register_admin(chat, user):
 __mod_name__ = "Tools"
 
 __help__ = """
-⍟ /img <text> :- `sᴇᴀʀᴄʜ ɢᴏᴏɢʟᴇ ғᴏʀ ɪᴍᴀɢᴇs ᴀɴᴅ ʀᴇᴛᴜʀɴs ᴛʜᴇᴍ ғᴏʀ ɢʀᴇᴀᴛᴇʀ ɴᴏ. ᴏғ ʀᴇsᴜʟᴛs sᴘᴇᴄɪғʏ ʟɪᴍ, ғᴏʀ`
+⍟ /img <text> :- `Search Google For Images And Returns Them For Greater No. Of Results Specify Lim, For`
 
 ᴇɢ: `/img hello lim=10`
 
-⍟ /webss <ᴡᴇʙɴᴀᴍᴇ.ᴄᴏᴍ> :- `ɢᴇᴛ sᴄʀᴇᴇɴ sʜᴏᴛ ᴏғ ᴀɴʏ ᴡᴇʙsɪᴛᴇ ʏᴏᴜ ᴡᴀɴᴛ `.
+⍟ /webss <Webname.com> :- `Get Screenshot Of Any Website You Want `.
 """
