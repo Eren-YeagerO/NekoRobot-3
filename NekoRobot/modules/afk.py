@@ -35,7 +35,8 @@ def afk(update, context):
     REDIS.set(f'afk_time_{update.effective_user.id}', start_afk_time)
     fname = update.effective_user.first_name
     try:
-        update.effective_message.reply_text(f"{fname} is now away!{notice}")
+        update.effective_message.reply_text(
+            "{} is now away!".format(fname))
     except BadRequest:
         pass
 
