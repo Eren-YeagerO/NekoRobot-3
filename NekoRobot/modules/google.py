@@ -115,7 +115,7 @@ async def is_register_admin(chat, user):
 
         return isinstance(
             (
-                await telethn(functions.channels.GetParticipantRequest(chat, user))
+                await tbot(functions.channels.GetParticipantRequest(chat, user))
             ).participant,
             (types.ChannelParticipantAdmin, types.ChannelParticipantCreator),
         )
