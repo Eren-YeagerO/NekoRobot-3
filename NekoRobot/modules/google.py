@@ -56,7 +56,7 @@ async def img_sampler(event):
     files_grabbed = []
     for files in types:
         files_grabbed.extend(glob.glob(files))
-    await telethn.send_file(event.chat_id, files_grabbed, reply_to=event.id)
+    await tbot.send_file(event.chat_id, files_grabbed, reply_to=event.id)
     os.chdir("/app")
     os.system("rm -rf store")
 
@@ -121,9 +121,9 @@ async def is_register_admin(chat, user):
         )
     if isinstance(chat, types.InputPeerChat):
 
-        ui = await telethn.get_peer_id(user)
+        ui = await tbot.get_peer_id(user)
         ps = (
-            await telethn(functions.messages.GetFullChatRequest(chat.chat_id))
+            await tbot(functions.messages.GetFullChatRequest(chat.chat_id))
         ).full_chat.participants.participants
         return isinstance(
             next((p for p in ps if p.user_id == ui), None),
