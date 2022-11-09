@@ -27,8 +27,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-from Himawari import DB_URL
-
 
 def start() -> scoped_session:
     engine = create_engine("postgres://enwfyszs:C4g39JW8GV0vAW9meLAQPwIzDfUS42GO@babar.db.elephantsql.com/enwfyszs")
