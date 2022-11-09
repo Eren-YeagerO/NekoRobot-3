@@ -86,7 +86,7 @@ async def drawText(image_path, text):
 
     else:
 
-        fnt = "./AsukaRobot/resources/default.ttf"
+        fnt = "./NekoRobot/LOGO_FONT/Vampire Wars.otf"
 
     m_font = ImageFont.truetype(fnt, int((70 / 640) * i_width))
 
