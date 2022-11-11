@@ -10,7 +10,7 @@ import requests
 from bs4 import BeautifulSoup
 from telegram import InputMediaPhoto, TelegramError
 
-from NekoRobot import dispatcher
+from NekoRobot import NEKO_PTB
 from NekoRobot.modules.disable import DisableAbleCommandHandler
 from NekoRobot.modules.helper_funcs.alternate import typing_action
 
