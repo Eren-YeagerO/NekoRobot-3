@@ -14,6 +14,7 @@ GitPython==3.1.29
 emoji==1.6.3
 pretty-errors==1.2.25
 lxml
+CloudScraper
 textblob==0.17.1
 beautifulsoup4
 requests
