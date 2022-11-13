@@ -71,7 +71,7 @@ def reverse(update: Update, context: CallbackContext) -> None:
             return
 
         image_file = context.bot.get_file(file_id)
-        image_file.download(imagename, out=BytesIO())
+        image_file.download(imagename)
     else:
         msg.reply_text(
             "Please Reply To A Sticker, Or An Image To Search It!",
