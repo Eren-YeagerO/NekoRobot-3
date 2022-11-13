@@ -28,22 +28,20 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
-import os
-import requests
-import urllib
-import urllib.request
-import urllib.parse
 
-from io import BytesIO
+import os
+import re
+import urllib
+import urllib.parse
+import urllib.request
+from urllib.error import HTTPError, URLError
+
+import requests
 from bs4 import BeautifulSoup
-from telegram.error import BadRequest, TelegramError
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram import ParseMode
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import CallbackContext
 
 from NekoRobot import NEKO_PTB
-from typing import List
-
 from NekoRobot.modules.disable import DisableAbleCommandHandler
 
 opener = urllib.request.build_opener()
@@ -51,7 +49,7 @@ useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML
 opener.addheaders = [("User-agent", useragent)]
 
 
-def reverse(update: Update, context: CallbackContext) -> None:
+async def reverse(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     chat_id = update.effective_chat.id
     rtmid = msg.message_id
@@ -68,19 +66,19 @@ def reverse(update: Update, context: CallbackContext) -> None:
         elif reply.document:
             file_id = reply.document.file_id
         else:
-            msg.reply_text("Reply To An Image Or Sticker To Lookup!")
+            await msg.reply_text("Reply To An Image Or Sticker To Lookup!")
             return
 
-        image_file = context.bot.get_file(file_id)
+        image_file = await context.bot.get_file(file_id)
         image_file.download(imagename, out=BytesIO())
     else:
-        msg.reply_text(
+        await msg.reply_text(
             "Please Reply To A Sticker, Or An Image To Search It!",
             parse_mode=ParseMode.MARKDOWN,
         )
         return
 
-    MsG = context.bot.send_message(
+    MsG = await context.bot.send_message(
         chat_id,
         "Let Me See...",
         reply_to_message_id=rtmid,
@@ -170,7 +168,7 @@ def ParseSauce(googleurl):
     return results
 
 
-NEKO_PTB.add_handler(
+CUTIEPII_PTB.add_handler(
     DisableAbleCommandHandler(["grs", "reverse", "pp"], reverse))
 
 __mod_name__ = "Reverse"
