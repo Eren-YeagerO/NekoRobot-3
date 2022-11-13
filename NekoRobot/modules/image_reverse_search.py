@@ -69,7 +69,7 @@ async def reverse(update: Update, context: CallbackContext) -> None:
             msg.reply_text("Reply To An Image Or Sticker To Lookup!")
             return
 
-        image_file = await context.bot.get_file(file_id)
+        image_file = context.bot.get_file(file_id)
         image_file.download(imagename, out=BytesIO())
     else:
         msg.reply_text(
@@ -78,7 +78,7 @@ async def reverse(update: Update, context: CallbackContext) -> None:
         )
         return
 
-    MsG = await context.bot.send_message(
+    MsG = context.bot.send_message(
         chat_id,
         "Let Me See...",
         reply_to_message_id=rtmid,
