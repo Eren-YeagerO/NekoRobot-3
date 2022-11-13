@@ -37,6 +37,7 @@ import urllib.request
 from urllib.error import HTTPError, URLError
 
 import requests
+from io import BytesIO
 from bs4 import BeautifulSoup
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import CallbackContext
