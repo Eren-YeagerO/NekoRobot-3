@@ -27,6 +27,7 @@ pynewtonmath
 spongemock
 zalgo-text
 geopy
+redis
 psutil
 jikanpy
 speedtest-cli==2.1.3
