@@ -66,13 +66,13 @@ async def reverse(update: Update, context: CallbackContext) -> None:
         elif reply.document:
             file_id = reply.document.file_id
         else:
-            await msg.reply_text("Reply To An Image Or Sticker To Lookup!")
+            msg.reply_text("Reply To An Image Or Sticker To Lookup!")
             return
 
         image_file = await context.bot.get_file(file_id)
         image_file.download(imagename, out=BytesIO())
     else:
-        await msg.reply_text(
+        msg.reply_text(
             "Please Reply To A Sticker, Or An Image To Search It!",
             parse_mode=ParseMode.MARKDOWN,
         )
