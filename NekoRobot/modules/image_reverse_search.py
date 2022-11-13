@@ -38,7 +38,7 @@ from io import BytesIO
 from bs4 import BeautifulSoup
 from telegram.error import BadRequest, TelegramError
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.constants import ParseMode
+from telegram import ParseMode
 from telegram.ext import CallbackContext
 
 from NekoRobot import NEKO_PTB
