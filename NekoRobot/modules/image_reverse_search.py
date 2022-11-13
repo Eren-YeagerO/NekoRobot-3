@@ -51,7 +51,7 @@ useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML
 opener.addheaders = [("User-agent", useragent)]
 
 
-async def reverse(update: Update, context: CallbackContext) -> None:
+def reverse(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     chat_id = update.effective_chat.id
     rtmid = msg.message_id
@@ -68,19 +68,19 @@ async def reverse(update: Update, context: CallbackContext) -> None:
         elif reply.document:
             file_id = reply.document.file_id
         else:
-            await msg.reply_text("Reply To An Image Or Sticker To Lookup!")
+            msg.reply_text("Reply To An Image Or Sticker To Lookup!")
             return
 
-        image_file = await context.bot.get_file(file_id)
+        image_file = context.bot.get_file(file_id)
         image_file.download(imagename, out=BytesIO())
     else:
-        await msg.reply_text(
+        msg.reply_text(
             "Please Reply To A Sticker, Or An Image To Search It!",
             parse_mode=ParseMode.MARKDOWN,
         )
         return
 
-    MsG = await context.bot.send_message(
+    MsG = context.bot.send_message(
         chat_id,
         "Let Me See...",
         reply_to_message_id=rtmid,
