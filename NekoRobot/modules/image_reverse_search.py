@@ -192,8 +192,7 @@ def scam(imgspage, lim):
 
 
 REVERSE_HANDLER = DisableAbleCommandHandler(
-    ["grs", "reverse", "pp"], reverse, pass_args=True, run_async=True
-)
+    ["grs", "reverse", "pp"], reverse))
 
 
 NEKO_PTB.add_handler(REVERSE_HANDLER)
