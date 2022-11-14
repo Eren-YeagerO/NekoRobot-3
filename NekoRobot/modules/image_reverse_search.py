@@ -45,7 +45,7 @@ from NekoRobot import NEKO_PTB
 from NekoRobot.modules.disable import DisableAbleCommandHandler
 
 opener = urllib.request.build_opener()
-useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36 Edg/88.0.705.68"
+useragent = "Mozilla/5.0 (Linux; Android 6.0.1; SM-G920V Build/MMB29K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.98 Mobile Safari/537.36"
 opener.addheaders = [("User-agent", useragent)]
 
 
@@ -168,7 +168,34 @@ def ParseSauce(googleurl):
     return results
 
 
-NEKO_PTB.add_handler(
-    DisableAbleCommandHandler(["grs", "reverse", "pp"], reverse))
+def scam(imgspage, lim):
+    """Parse/Scrape the HTML code for the info we want."""
+
+    single = opener.open(imgspage).read()
+    decoded = single.decode("utf-8")
+    if int(lim) > 10:
+        lim = 10
+
+    imglinks = []
+    counter = 0
+
+    pattern = r"^,\[\"(.*[.png|.jpg|.jpeg])\",[0-9]+,[0-9]+\]$"
+    oboi = re.findall(pattern, decoded, re.I | re.M)
+
+    for imglink in oboi:
+        counter += 1
+        imglinks.append(imglink)
+        if counter >= int(lim):
+            break
+
+    return imglinks
+
+
+REVERSE_HANDLER = DisableAbleCommandHandler(
+    ["grs", "reverse", "pp"], reverse, pass_args=True, run_async=True
+)
+
+
+NEKO_PTB.add_handler(REVERSE_HANDLER)
 
 __mod_name__ = "Reverse"
