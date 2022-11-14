@@ -59,6 +59,9 @@ def is_sudo_plus(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
 def is_stats_plus(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
     return user_id in DEV_USERS
 
+def user_can_pin(chat: Chat, user: User, bot_id: int) -> bool:
+    return chat.get_member(user.id).can_pin_messages
+
 def user_can_changeinfo(chat: Chat, user: User, bot_id: int) -> bool:
     return chat.get_member(user.id).can_change_info
 
