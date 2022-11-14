@@ -34,7 +34,7 @@ from NekoRobot import (
     DEMONS,
     TIGERS,
     WOLVES,
-    dispatcher,
+    NEKO_PTB,
 )
 
 from telegram import Chat, ChatMember, ParseMode, Update, TelegramError, User
