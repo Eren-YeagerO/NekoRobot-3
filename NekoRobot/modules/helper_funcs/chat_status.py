@@ -187,7 +187,7 @@ def stats_plus(func):
                 pass
         else:
             update.effective_message.reply_text(
-                "Himawari stats is just for Dev User",
+                "Nezuko stats is just for Dev User",
             )
 
     return is_stats_plus_func
