@@ -2,7 +2,7 @@ from datetime import datetime
 from functools import wraps
 
 from NekoRobot.ext import CallbackContext
-from NekoRobot.modules.helper_funcs.decorators import Asukacmd, Asukacallback
+from NekoRobot.modules.helper_funcs.decorators import nekocmd, nekocallback
 from NekoRobot.modules.helper_funcs.misc import is_module_loaded
 
 from ..modules.helper_funcs.anonymous import user_admin, AdminPerms
@@ -19,9 +19,9 @@ if is_module_loaded(FILENAME):
     from telegram.error import BadRequest, Unauthorized
     from telegram.utils.helpers import escape_markdown
 
-    from AsukaRobot import EVENT_LOGS as GBAN_LOGS, LOGGER as log, NEKO_PTB
-    from AsukaRobot.modules.helper_funcs.chat_status import user_admin as u_admin, is_user_admin
-    from AsukaRobot.modules.sql import log_channel_sql as sql
+    from NekoRobot import EVENT_LOGS as GBAN_LOGS, LOGGER as log, NEKO_PTB
+    from NekoRobot.modules.helper_funcs.chat_status import user_admin as u_admin, is_user_admin
+    from NekoRobot.modules.sql import log_channel_sql as sql
 
 
     def loggable(func):
@@ -125,7 +125,7 @@ if is_module_loaded(FILENAME):
             message.reply_text("No log channel has been set for this group!")
 
 
-    @Asukacmd(command='setlog')
+    @nekocmd(command='setlog')
     @user_admin(AdminPerms.CAN_CHANGE_INFO)
     def setlog(update: Update, context: CallbackContext):
         bot = context.bot
@@ -168,7 +168,7 @@ if is_module_loaded(FILENAME):
             )
 
 
-    @Asukacmd(command='unsetlog')
+    @nekocmd(command='unsetlog')
     @user_admin(AdminPerms.CAN_CHANGE_INFO)
     def unsetlog(update: Update, context: CallbackContext):
         bot = context.bot
@@ -226,7 +226,7 @@ else:
         return func
 
 
-@Asukacmd("logsettings")
+@nekocmd("logsettings")
 @user_admin(AdminPerms.CAN_CHANGE_INFO)
 def log_settings(update: Update, _: CallbackContext):
     chat = update.effective_chat
@@ -252,7 +252,7 @@ def log_settings(update: Update, _: CallbackContext):
     msg.reply_text("Toggle channel log settings", reply_markup=btn)
 
 
-from AsukaRobot.modules.sql import log_channel_sql as sql
+from NekoRobot.modules.sql import log_channel_sql as sql
 
 
 @Asukacallback(pattern=r"log_tog_.*")
