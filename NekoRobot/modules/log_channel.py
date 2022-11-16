@@ -1,7 +1,7 @@
 from datetime import datetime
 from functools import wraps
 
-from NekoRobot.ext import CallbackContext
+from telegram.ext import CallbackContext
 from NekoRobot.modules.helper_funcs.decorators import nekocmd, nekocallback
 from NekoRobot.modules.helper_funcs.misc import is_module_loaded
 
