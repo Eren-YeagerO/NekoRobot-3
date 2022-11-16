@@ -679,15 +679,7 @@ def pin(update: Update, context: CallbackContext) -> str:
                 chat.id, prev_message.message_id, disable_notification=is_silent
             )
             msg.reply_text(
-                f"I have pinned a message.",
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(
-                                "👉 Go to message", url=f"{message_link}")
-                        ]
-                    ]
-                ), 
+                f"Pinned <a href='{message_link}'>this message</a>.",
                 parse_mode=ParseMode.HTML,
                 disable_web_page_preview=True,
             )
