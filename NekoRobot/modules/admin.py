@@ -679,7 +679,7 @@ def pin(update: Update, context: CallbackContext) -> str:
                 chat.id, prev_message.message_id, disable_notification=is_silent
             )
             msg.reply_text(
-                f"Pinned <a href='{message_link}'>this message</a>.",
+                f"*Pinned <a href='{message_link}'>this</a>message.*",
                 parse_mode=ParseMode.HTML,
                 disable_web_page_preview=True,
             )
@@ -732,7 +732,7 @@ def unpin(update: Update, context: CallbackContext):
                 chat.id, prev_message.message_id
             )
             msg.reply_text(
-                f"Unpinned <a href='{message_link}'>this message</a>.",
+                f"*Unpinned <a href='{message_link}'>this</a>message.*",
                 parse_mode=ParseMode.HTML,
                 disable_web_page_preview=True,
             )
