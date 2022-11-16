@@ -1,47 +1,23 @@
-"""
-BSD 2-Clause License
-Copyright (C) 2017-2019, Paul Larsen
-Copyright (C) 2022-2023, Awesome-Prince, [ https://github.com/Awesome-Prince]
-Copyright (c) 2022-2023, Programmer Network, [ https://github.com/Awesome-Prince/NekoRobot-3 ]
-All rights reserved.
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-1. Redistributions of source code must retain the above copyright notice, this
-   list of conditions and the following disclaimer.
-2. Redistributions in binary form must reproduce the above copyright notice,
-   this list of conditions and the following disclaimer in the documentation
-   and/or other materials provided with the distribution.
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-"""
+import random
 
-from functools import wraps
-from threading import RLock
 from time import perf_counter
-
+from functools import wraps
 from cachetools import TTLCache
-from pyrogram import filters
-from telegram import Chat, ChatMember, ParseMode, Update, User
-from telegram.ext import CallbackContext
-
+from threading import RLock
 from NekoRobot import (
     DEL_CMDS,
-    DEMONS,
     DEV_USERS,
     DRAGONS,
-    NEKO_PTB,
     SUPPORT_CHAT,
+    DEMONS,
     TIGERS,
     WOLVES,
+    NEKO_PTB,
+    # KING,
 )
+
+from telegram import Chat, ChatMember, ParseMode, Update, User
+from telegram.ext import CallbackContext
 
 # stores admemes in memory for 10 min.
 ADMIN_CACHE = TTLCache(maxsize=512, ttl=60 * 10, timer=perf_counter)
@@ -59,22 +35,23 @@ def is_support_plus(chat: Chat, user_id: int, member: ChatMember = None) -> bool
 def is_sudo_plus(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
     return user_id in DRAGONS or user_id in DEV_USERS
 
-
 def is_stats_plus(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
     return user_id in DEV_USERS
-
 
 def user_can_changeinfo(chat: Chat, user: User, bot_id: int) -> bool:
     return chat.get_member(user.id).can_change_info
 
-
 def user_can_promote(chat: Chat, user: User, bot_id: int) -> bool:
     return chat.get_member(user.id).can_promote_members
 
+def is_demon_plus(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
+    return user_id in DEMONS or user_id in DRAGONS or user_id in DEV_USERS
+
+def can_manage_voice_chats(chat: Chat, user: User, bot_id: int) -> bool: 
+    return chat.get_member(user.id).can_manage_voicechats
 
 def user_can_pin(chat: Chat, user: User, bot_id: int) -> bool:
     return chat.get_member(user.id).can_pin_messages
-
 
 def is_user_admin(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
     if (
@@ -92,11 +69,11 @@ def is_user_admin(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
         # try to fetch from cache first.
         try:
             return user_id in ADMIN_CACHE[chat.id]
-        except (KeyError, IndexError):
+        except KeyError:
             # keyerror happend means cache is deleted,
             # so query bot api again and return user status
             # while saving it in cache for future useage...
-            chat_admins = NEKO_PTB.bot.getChatAdministrators(chat.id)
+            chat_admins = dispatcher.bot.getChatAdministrators(chat.id)
             admin_list = [x.user.id for x in chat_admins]
             ADMIN_CACHE[chat.id] = admin_list
 
@@ -143,7 +120,7 @@ def is_user_in_chat(chat: Chat, user_id: int) -> bool:
 def dev_plus(func):
     @wraps(func)
     def is_dev_plus_func(update: Update, context: CallbackContext, *args, **kwargs):
-        context.bot
+        bot = context.bot
         user = update.effective_user
 
         if user.id in DEV_USERS:
@@ -167,7 +144,7 @@ def dev_plus(func):
 def sudo_plus(func):
     @wraps(func)
     def is_sudo_plus_func(update: Update, context: CallbackContext, *args, **kwargs):
-        context.bot
+        bot = context.bot
         user = update.effective_user
         chat = update.effective_chat
 
@@ -187,11 +164,10 @@ def sudo_plus(func):
 
     return is_sudo_plus_func
 
-
 def stats_plus(func):
     @wraps(func)
     def is_stats_plus_func(update: Update, context: CallbackContext, *args, **kwargs):
-        context.bot
+        bot = context.bot
         user = update.effective_user
         chat = update.effective_chat
 
@@ -206,7 +182,7 @@ def stats_plus(func):
                 pass
         else:
             update.effective_message.reply_text(
-                "Neko stats is just for Dev User",
+                "Asuka stats is just for Dev User",
             )
 
     return is_sudo_plus_func
@@ -215,7 +191,7 @@ def stats_plus(func):
 def support_plus(func):
     @wraps(func)
     def is_support_plus_func(update: Update, context: CallbackContext, *args, **kwargs):
-        context.bot
+        bot = context.bot
         user = update.effective_user
         chat = update.effective_chat
 
@@ -233,12 +209,9 @@ def support_plus(func):
 def whitelist_plus(func):
     @wraps(func)
     def is_whitelist_plus_func(
-        update: Update,
-        context: CallbackContext,
-        *args,
-        **kwargs,
+        update: Update, context: CallbackContext, *args, **kwargs,
     ):
-        context.bot
+        bot = context.bot
         user = update.effective_user
         chat = update.effective_chat
 
@@ -250,11 +223,28 @@ def whitelist_plus(func):
 
     return is_whitelist_plus_func
 
+def demon_plus(func):
+    @wraps(func)
+    def is_demon_plus_func(update: Update, context: CallbackContext, *args, **kwargs):
+        bot = context.bot
+        user = update.effective_user
+        chat = update.effective_chat
+
+        if user and is_demon_plus(chat, user.id):
+            return func(update, context, *args, **kwargs)
+        if DEL_CMDS and " " not in update.effective_message.text:
+            try:
+                update.effective_message.delete()
+            except:
+                pass
+
+    return is_demon_plus_func
+
 
 def user_admin(func):
     @wraps(func)
     def is_admin(update: Update, context: CallbackContext, *args, **kwargs):
-        context.bot
+        bot = context.bot
         user = update.effective_user
         chat = update.effective_chat
 
@@ -278,12 +268,9 @@ def user_admin(func):
 def user_admin_no_reply(func):
     @wraps(func)
     def is_not_admin_no_reply(
-        update: Update,
-        context: CallbackContext,
-        *args,
-        **kwargs,
+        update: Update, context: CallbackContext, *args, **kwargs,
     ):
-        context.bot
+        bot = context.bot
         user = update.effective_user
         chat = update.effective_chat
 
@@ -303,7 +290,7 @@ def user_admin_no_reply(func):
 def user_not_admin(func):
     @wraps(func)
     def is_not_admin(update: Update, context: CallbackContext, *args, **kwargs):
-        context.bot
+        bot = context.bot
         user = update.effective_user
         chat = update.effective_chat
 
@@ -414,8 +401,7 @@ def can_restrict(func):
         if chat.get_member(bot.id).can_restrict_members:
             return func(update, context, *args, **kwargs)
         update.effective_message.reply_text(
-            cant_restrict,
-            parse_mode=ParseMode.HTML,
+            cant_restrict, parse_mode=ParseMode.HTML,
         )
 
     return restrict_rights
@@ -424,7 +410,7 @@ def can_restrict(func):
 def user_can_ban(func):
     @wraps(func)
     def user_is_banhammer(update: Update, context: CallbackContext, *args, **kwargs):
-        context.bot
+        bot = context.bot
         user = update.effective_user.id
         member = update.effective_chat.get_member(user)
         if (
@@ -466,11 +452,23 @@ def connection_status(func):
 
     return connected_status
 
+def user_can_change(func):	
+
+    @wraps(func)	
+    def info_changer(update, context, *args, **kwargs):	
+        user = update.effective_user.id	
+        member = update.effective_chat.get_member(user)	
+        
+
+        if not (member.can_change_info or member.status == "creator") and not user in SUDO_USERS:
+            update.effective_message.reply_text("You are missing the following rights to use this command: \nCanChangeInfo")
+                   	
+            return ""	
+
+        return func(update, context, *args, **kwargs)	
+
+    return info_changer
 
 from NekoRobot.modules import connection
 
 connected = connection.connected
-
-
-def callbacks_in_filters(data):
-    return filters.create(lambda flt, _, query: flt.data in query.data, data=data)
