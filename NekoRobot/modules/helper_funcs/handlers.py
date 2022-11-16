@@ -1,4 +1,4 @@
-import AsukaRobot.modules.sql.blacklistusers_sql as sql
+import NekoRobot.modules.sql.blacklistusers_sql as sql
 from NekoRobot import ALLOW_EXCL
 from NekoRobot import (DEV_USERS, DRAGONS, DEMONS, TIGERS, WOLVES)
 
@@ -100,15 +100,15 @@ class CustomCommandHandler(CommandHandler):
 
     def handle_update(self, update, NEKO_PTB, check_result, context=None):
         if context:
-            self.collect_additional_context(context, update, dispatcher,
+            self.collect_additional_context(context, update, NEKO_PTB,
                                             check_result)
             return self.callback(update, context)
         else:
-            optional_args = self.collect_optional_args(dispatcher, update,
+            optional_args = self.collect_optional_args(NEKO_PTB, update,
                                                        check_result)
             return self.callback(dispatcher.bot, update, **optional_args)
 
-    def collect_additional_context(self, context, update, dispatcher,
+    def collect_additional_context(self, context, update, NEKO_PTB,
                                    check_result):
         if isinstance(check_result, bool):
             context.args = update.effective_message.text.split()[1:]
