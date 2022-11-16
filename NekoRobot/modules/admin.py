@@ -679,7 +679,7 @@ def pin(update: Update, context: CallbackContext) -> str:
                 chat.id, prev_message.message_id, disable_notification=is_silent
             )
             msg.reply_text(
-                f"Pinned <a href='{message_link}'>this</a> message.",
+                f"<b>Pinned</b> <a href='{message_link}'><b>this</b></a> <b>message.</b>",
                 parse_mode=ParseMode.HTML,
                 disable_web_page_preview=True,
             )
