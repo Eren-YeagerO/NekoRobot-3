@@ -105,7 +105,7 @@ if is_module_loaded(FILENAME):
                 )
 
 
-    @Asukacmd(command='logchannel')
+    @nekocmd(command='logchannel')
     @u_admin
     def logging(update: Update, context: CallbackContext):
         bot = context.bot
@@ -255,7 +255,7 @@ def log_settings(update: Update, _: CallbackContext):
 from NekoRobot.modules.sql import log_channel_sql as sql
 
 
-@Asukacallback(pattern=r"log_tog_.*")
+@nekocallback(pattern=r"log_tog_.*")
 def log_setting_callback(update: Update, context: CallbackContext):
     cb = update.callback_query
     user = cb.from_user
