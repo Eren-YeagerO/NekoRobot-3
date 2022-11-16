@@ -732,7 +732,7 @@ def unpin(update: Update, context: CallbackContext):
                 chat.id, prev_message.message_id
             )
             msg.reply_text(
-                f"Unpinned <a href='{message_link}'>`this`</a> message.",
+                f"<b>Unpinned</b> <a href='{message_link}'><b>this</b></a> <b>message.</b>",
                 parse_mode=ParseMode.HTML,
                 disable_web_page_preview=True,
             )
