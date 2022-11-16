@@ -255,7 +255,7 @@ def promote(update: Update, context: CallbackContext) -> str:
 
     if (
         not (promoter.can_promote_members or promoter.status == "creator")
-        and user.id not in DEV_USERS
+        and user.id not in DRAGONS
     ):
         message.reply_text("You don't have the necessary rights to do that!")
         return
@@ -337,7 +337,7 @@ def lowpromote(update: Update, context: CallbackContext) -> str:
 
     if (
         not (promoter.can_promote_members or promoter.status == "creator")
-        and user.id not in DEV_USERS
+        and user.id not in DRAGONS
     ):
         message.reply_text("You don't have the necessary rights to do that!")
         return
@@ -414,7 +414,7 @@ def fullpromote(update: Update, context: CallbackContext) -> str:
 
     if (
         not (promoter.can_promote_members or promoter.status == "creator")
-        and user.id not in DEV_USERS
+        and user.id not in DRAGONS
     ):
         message.reply_text("You don't have the necessary rights to do that!")
         return
@@ -521,7 +521,7 @@ def demote(update: Update, context: CallbackContext) -> str:
     if user_id == bot.id:
         message.reply_text("I can't demote myself! Get an admin to do it for me.")
         return
-    if user.id in DEV_USERS:
+    if user.id in DRAGONS:
         message.reply_text("I can't demote a key member of my family.")
         return
 
