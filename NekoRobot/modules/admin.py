@@ -36,7 +36,7 @@ from telegram.utils.helpers import mention_html
 from telethon.tl import functions, types
 from telegram import User, Chat
 
-from NekoRobot import DRAGONS, NEKO_PTB, telethn as bot
+from NekoRobot import DRAGONS, NEKO_PTB, tbot as bot
 from NekoRobot.modules.disable import DisableAbleCommandHandler
 from NekoRobot.modules.helper_funcs.chat_status import (
     bot_admin,
