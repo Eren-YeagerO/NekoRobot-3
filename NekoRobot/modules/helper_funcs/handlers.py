@@ -106,7 +106,7 @@ class CustomCommandHandler(CommandHandler):
         else:
             optional_args = self.collect_optional_args(NEKO_PTB, update,
                                                        check_result)
-            return self.callback(dispatcher.bot, update, **optional_args)
+            return self.callback(NEKO_PTB.bot, update, **optional_args)
 
     def collect_additional_context(self, context, update, NEKO_PTB,
                                    check_result):
