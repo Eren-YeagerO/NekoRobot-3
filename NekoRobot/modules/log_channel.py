@@ -20,9 +20,9 @@ if is_module_loaded(FILENAME):
     from telegram.error import BadRequest, Unauthorized
     from telegram.utils.helpers import escape_markdown
 
-    from AsukaRobot import EVENT_LOGS as GBAN_LOGS, LOGGER as log, dispatcher
-    from AsukaRobot.modules.helper_funcs.chat_status import user_admin as u_admin, is_user_admin
-    from AsukaRobot.modules.sql import log_channel_sql as sql
+    from NekoRobot import EVENT_LOGS as GBAN_LOGS, LOGGER as log, dispatcher
+    from NekoRobot.modules.helper_funcs.chat_status import user_admin as u_admin, is_user_admin
+    from NekoRobot.modules.sql import log_channel_sql as sql
 
 
     def loggable(func):
