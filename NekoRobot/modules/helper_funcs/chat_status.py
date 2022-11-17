@@ -206,7 +206,7 @@ def stats_plus(func):
                 pass
         else:
             update.effective_message.reply_text(
-                "Neko stats is just for Dev User",
+                "Nezuko stats is just for Dev User",
             )
 
     return is_sudo_plus_func
