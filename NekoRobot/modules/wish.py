@@ -28,7 +28,7 @@ async def wish(e):
         )
     if not e.is_reply:
         mm = random.randint(1, 100)
-        fire = "https://telegra.ph/file/cae00f6c0729da2a93315.mp4"
+        fire = random.choice(GIF),
         await neko.send_file(
             e.chat_id,
             fire,
