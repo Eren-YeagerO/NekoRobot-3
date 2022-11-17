@@ -155,7 +155,7 @@ def set_flood(update, context) -> str:
     conn = connected(context.bot, update, chat, user.id, need_admin=True)
     if conn:
         chat_id = conn
-        chat_name = dispatcher.bot.getChat(conn).title
+        chat_name = NEKO_PTB.bot.getChat(conn).title
     else:
         if update.effective_message.chat.type == "private":
             send_message(
@@ -248,7 +248,7 @@ def flood(update, context):
     conn = connected(context.bot, update, chat, user.id, need_admin=False)
     if conn:
         chat_id = conn
-        chat_name = dispatcher.bot.getChat(conn).title
+        chat_name = NEKO_PTB.bot.getChat(conn).title
     else:
         if update.effective_message.chat.type == "private":
             send_message(
@@ -292,9 +292,9 @@ def set_flood_mode(update, context):
 
     conn = connected(context.bot, update, chat, user.id, need_admin=True)
     if conn:
-        chat = dispatcher.bot.getChat(conn)
+        chat = NEKO_PTB.bot.getChat(conn)
         chat_id = conn
-        chat_name = dispatcher.bot.getChat(conn).title
+        chat_name = NEKO_PTB.bot.getChat(conn).title
     else:
         if update.effective_message.chat.type == "private":
             send_message(
