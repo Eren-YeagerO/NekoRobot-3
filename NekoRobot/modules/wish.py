@@ -54,4 +54,4 @@ async def wish(e):
  if not e.is_reply:
          mm = random.randint(1,100)
          DREAM = f"**Your wish has been cast.✨**\n\n__chance of success {mm}%__"
-         await e.reply(DREAM, buttons=BUTTON, file=(random.choice(GIF) )
+         await e.reply(DREAM, buttons=BUTTON, file=(random.choice(GIF))
