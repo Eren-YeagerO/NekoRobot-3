@@ -20,7 +20,7 @@ if is_module_loaded(FILENAME):
     from telegram.error import BadRequest, Unauthorized
     from telegram.utils.helpers import escape_markdown
 
-    from NekoRobot import EVENT_LOGS as GBAN_LOGS, LOGGER as log, dispatcher
+    from NekoRobot import EVENT_LOGS as GBAN_LOGS, LOGGER as log, NEKO_PTB
     from NekoRobot.modules.helper_funcs.chat_status import user_admin as u_admin, is_user_admin
     from NekoRobot.modules.sql import log_channel_sql as sql
 
@@ -198,7 +198,7 @@ if is_module_loaded(FILENAME):
     def __chat_settings__(chat_id, user_id):
         log_channel = sql.get_chat_log_channel(chat_id)
         if log_channel:
-            log_channel_info = dispatcher.bot.get_chat(log_channel)
+            log_channel_info = NEKO_PTB.bot.get_chat(log_channel)
             return f"This group has all it's logs sent to: {escape_markdown(log_channel_info.title)} (`{log_channel}`)"
         return "No log channel is set for this group!"
 
