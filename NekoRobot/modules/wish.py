@@ -15,21 +15,11 @@ GIF = (
 
 @neko.on(events.NewMessage(pattern="/wish ?(.*)"))
 async def wish(e):
-
-    if e.is_reply:
-        mm = random.randint(1, 100)
-        quew = e.pattern_match.group(1)
+ quew = e.pattern_match.group(1)
  if e.sender_id != DEV_USERS and not quew:
-await neko.send_file(
-            e.chat_id,
-            fire,
-            caption=f"**Heeey [{e.sender.first_name}](tg://user?id={e.sender.id}), Your wish has been cast.💜**\n\n__chance of success {mm}%__",
-    if not e.is_reply:
-        mm = random.randint(1, 100)
-        fire = random.choice(GIF)
-        await neko.send_file(
-            e.chat_id,
-            fire,
-            caption=f"**Hey [{e.sender.first_name}](tg://user?id={e.sender.id}), Your wish has been cast.💜**\n\n__chance of success {mm}%__",
-            reply_to=e,
-        )
+  (await e.reply(WISH, parse_mode=ParseMode.MARKDOWN, buttons=BUTTON, file=STAR),) 
+  return   
+ if not e.is_reply:
+         mm = random.randint(1,100)
+         DREAM = f"**Your wish has been cast.✨**\n\n__chance of success {mm}%__"
+         await e.reply(DREAM, buttons=BUTTON, file=random.choice(GIF) )
