@@ -15,7 +15,7 @@ from telegram.ext.dispatcher import run_async
 from telegram.utils.helpers import mention_html
 
 import NekoRobot.modules.sql.locks_sql as sql
-from NekoRobot import DRAGONS, LOGGER, dispatcher
+from NekoRobot import DRAGONS, LOGGER, NEKO_PTB
 from NekoRobot.modules.connection import connected
 from NekoRobot.modules.disable import DisableAbleCommandHandler
 from NekoRobot.modules.helper_funcs.alternate import send_message, typing_action
@@ -165,7 +165,7 @@ def lock(update, context) -> str:
                 # Connection check
                 conn = connected(context.bot, update, chat, user.id, need_admin=True)
                 if conn:
-                    chat = dispatcher.bot.getChat(conn)
+                    chat = NEKO_PTB.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
                     text = "Locked {} for non-admins in {}!".format(ltype, chat_name)
@@ -198,7 +198,7 @@ def lock(update, context) -> str:
                 # Connection check
                 conn = connected(context.bot, update, chat, user.id, need_admin=True)
                 if conn:
-                    chat = dispatcher.bot.getChat(conn)
+                    chat = NEKO_PTB.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
                     text = "Locked {} for all non-admins in {}!".format(
@@ -270,7 +270,7 @@ def unlock(update, context) -> str:
                 # Connection check
                 conn = connected(context.bot, update, chat, user.id, need_admin=True)
                 if conn:
-                    chat = dispatcher.bot.getChat(conn)
+                    chat = NEKO_PTB.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
                     text = "Unlocked {} for everyone in {}!".format(ltype, chat_name)
@@ -302,7 +302,7 @@ def unlock(update, context) -> str:
                 # Connection check
                 conn = connected(context.bot, update, chat, user.id, need_admin=True)
                 if conn:
-                    chat = dispatcher.bot.getChat(conn)
+                    chat = NEKO_PTB.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
                     text = "Unlocked {} for everyone in {}!".format(ltype, chat_name)
@@ -478,7 +478,7 @@ def build_lock_message(chat_id):
             locklist.append("button = `{}`".format(locks.button))
             locklist.append("egame = `{}`".format(locks.egame))
             locklist.append("inline = `{}`".format(locks.inline))
-    permissions = dispatcher.bot.get_chat(chat_id).permissions
+    permissions = NEKO_PTB.bot.get_chat(chat_id).permissions
     permslist.append("messages = `{}`".format(permissions.can_send_messages))
     permslist.append("media = `{}`".format(permissions.can_send_media_messages))
     permslist.append("poll = `{}`".format(permissions.can_send_polls))
@@ -510,7 +510,7 @@ def list_locks(update, context):
     # Connection check
     conn = connected(context.bot, update, chat, user.id, need_admin=True)
     if conn:
-        chat = dispatcher.bot.getChat(conn)
+        chat = NEKO_PTB.bot.getChat(conn)
         chat_name = chat.title
     else:
         if update.effective_message.chat.type == "private":
