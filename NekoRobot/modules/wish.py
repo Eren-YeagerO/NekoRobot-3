@@ -5,11 +5,11 @@ from telethon import events
 from NekoRobot import tbot as neko
 
 GIF = (
-    "CAACAgUAAxkBAAIIW2NL5v9F9hUom4xmsgNYb63SEfZZAAIZBgACYAF5VIerYoMcSln8KgQ",
-    "CAACAgUAAxkBAAIIT2NL5tVmdAO3n1o3cp9Jic9LkqJvAAK7AgACoU3RVLpdwYfQPmS9KgQ",
-    "CAACAgUAAxkBAAIIUGNL5tVNd0rwdoMv-uDVcZ3hHgwlAAIwAwACP9jQVMv2AfU-DvBfKgQ",
-    "CAACAgUAAxkBAAIIUmNL5tUzCtvS5E-XR8h3tFMSqVu7AAIGAwACNZnYVOTUhlBiHTQGKgQ",
-    "CAACAgUAAxkBAAIIUWNL5tVBEQAB2gWLSq0ymEPeAj5kmQAC3QEAAuu92VSPj3UkCiNvfioE",
+    "https://telegra.ph/file/ef94f2f61aa4d9394ef23.mp4",
+    "https://telegra.ph/file/b82442bf9ebc32534f7a2.mp4",
+    "https://telegra.ph/file/70d43e136125f9c120d2e.mp4",
+    "https://telegra.ph/file/45354d3e42982f8de78f4.mp4",
+    "https://telegra.ph/file/a22a0930f069686a0c4ef.mp4",
 )
 
 
