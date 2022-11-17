@@ -2,7 +2,21 @@ import random
 
 from telethon import events
 
-from NekoRobot import tbot as neko
+from NekoRobot import DEV_USERS, OWNER_ID, tbot as neko
+
+from telethon import events, Button
+from telegram import ParseMode
+
+BUTTON = [[Button.url("❓ What Is This", "https://t.me/WOFBotsUpdates/4")]]
+COMET = "https://telegra.ph/file/713fbfbdde25cc1726866.mp4"
+STAR = "https://telegra.ph/file/ad90b44c551cec31df76b.mp4"
+WISH = """
+**You can use** `/wish` **as a general Wishing Well of sorts**
+**For example:**
+`/wish I could date you 😍,` **or**
+`/wish that sushi was 🍣 in /emojify, or
+/wish I had someone to /cuddle at night...`
+"""
 
 GIF = (
     "https://telegra.ph/file/ef94f2f61aa4d9394ef23.mp4",
