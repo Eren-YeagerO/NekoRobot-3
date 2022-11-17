@@ -26,6 +26,14 @@ from NekoRobot import DEV_USERS, OWNER_ID, tbot as telethn
 from telethon import events, Button
 from telegram import ParseMode
 
+GIF = (
+    "https://telegra.ph/file/ef94f2f61aa4d9394ef23.mp4",
+    "https://telegra.ph/file/b82442bf9ebc32534f7a2.mp4",
+    "https://telegra.ph/file/70d43e136125f9c120d2e.mp4",
+    "https://telegra.ph/file/45354d3e42982f8de78f4.mp4",
+    "https://telegra.ph/file/a22a0930f069686a0c4ef.mp4",
+)
+
 BUTTON = [[Button.url("❓ What Is This", "https://t.me/WOFBotsUpdates/4")]]
 COMET = "https://telegra.ph/file/713fbfbdde25cc1726866.mp4"
 STAR = "https://telegra.ph/file/ad90b44c551cec31df76b.mp4"
@@ -46,4 +54,4 @@ async def wish(e):
  if not e.is_reply:
          mm = random.randint(1,100)
          DREAM = f"**Your wish has been cast.✨**\n\n__chance of success {mm}%__"
-         await e.reply(DREAM, buttons=BUTTON, file=random.choice(GIF) )
+         await e.reply(DREAM, buttons=BUTTON, file=(random.choice(GIF) )
