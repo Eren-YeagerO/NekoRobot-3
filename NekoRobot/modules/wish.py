@@ -2,7 +2,21 @@ import random
 
 from telethon import events
 
-from NekoRobot import tbot as neko
+from NekoRobot import DEV_USERS, OWNER_ID, tbot as neko
+
+from tbot import events, Button
+from telegram import ParseMode
+
+BUTTON = [[Button.url("❓ What Is This", "https://t.me/WOFBotsUpdates/4")]]
+COMET = "https://telegra.ph/file/713fbfbdde25cc1726866.mp4"
+STAR = "https://telegra.ph/file/ad90b44c551cec31df76b.mp4"
+WISH = """
+**You can use** `/wish` **as a general Wishing Well of sorts**
+**For example:**
+`/wish I could date you 😍,` **or**
+`/wish that sushi was 🍣 in /emojify, or
+/wish I had someone to /cuddle at night...`
+"""
 
 GIF = (
     "https://telegra.ph/file/ef94f2f61aa4d9394ef23.mp4",
@@ -15,17 +29,10 @@ GIF = (
 
 @neko.on(events.NewMessage(pattern="/wish ?(.*)"))
 async def wish(e):
-
-    if e.is_reply:
-        mm = random.randint(1, 100)
-        lol = await e.get_reply_message()
-        fire = "https://telegra.ph/file/cae00f6c0729da2a93315.mp4"
-        await neko.send_file(
-            e.chat_id,
-            fire,
-            caption=f"**Hey [{e.sender.first_name}](tg://user?id={e.sender.id}), Your wish has been cast.💜**\n\n__chance of success {mm}%__",
-            reply_to=lol,
-        )
+ quew = e.pattern_match.group(1)
+ if e.sender_id != DEV_USERS and not quew:
+  (await e.reply(WISH, parse_mode=ParseMode.MARKDOWN, buttons=BUTTON, file=STAR),) 
+  return
     if not e.is_reply:
         mm = random.randint(1, 100)
         fire = random.choice(GIF)
