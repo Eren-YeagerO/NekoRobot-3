@@ -1,4 +1,3 @@
-
 import random
 
 from telethon import events
