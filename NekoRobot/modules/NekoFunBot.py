@@ -77,6 +77,11 @@ def slap(update, context):
         msg.reply_video(slapme, caption="Here... Take this from me.")
 
 
+def sex(update: Update, context: CallbackContext):
+    reply_animation = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
+    reply_animation(random.choice(fun_strings.SEX))
+
+
 def blush(update, context):
     msg = update.effective_message
     url = "https://nekos.best/api/v2/blush"
