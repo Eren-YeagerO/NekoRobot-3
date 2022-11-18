@@ -37,7 +37,7 @@ async def ud_(e):
     try:
         reply_text = f'Word: {text}\n\nDefinition: \n{results["list"][0]["definition"]}'
         reply_text += f'\n\nExample: \n{results["list"][0]["example"]}'
-    except:
+    except IndexError:
         reply_txt = "No results found."
     await e.reply(reply_txt, buttons=Button.url("🔎 Google it!", f"https://www.google.com/search?q={text}"), parse_mode="html")
    
