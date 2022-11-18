@@ -52,6 +52,7 @@ airing_query = """
     query ($id: Int,$search: String) { 
       Media (id: $id, type: ANIME,search: $search) { 
         id
+        siteUrl
         episodes
         title {
           romaji
