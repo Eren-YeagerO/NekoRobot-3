@@ -1,27 +1,43 @@
+"""
+MIT License
+
+Copyright (c) 2022 Arsh
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
+
 import requests
-from telegram import ParseMode, Update
-from telegram.ext import CallbackContext
+from NekoRobot.events import register
+from telethon import Button
 
-from NekoRobot import NEKO_PTB
-from NekoRobot.modules.disable import DisableAbleCommandHandler
-
-
-def ud(update: Update, context: CallbackContext):
-    message = update.effective_message
-    text = message.text[len("/ud ") :]
-    results = requests.get(
-        f"https://api.urbandictionary.com/v0/define?term={text}",
-    ).json()
+@register(pattern="[/!]ud")
+async def ud_(e):
     try:
-        reply_text = f'*{text}*\n\n{results["list"][0]["definition"]}\n\n_{results["list"][0]["example"]}_'
+        text = e.text.split(" ", maxsplit=1)[1]
+    except IndexError:
+        return await e.reply("Invalid Args")
+    results = requests.get(
+        f"https://api.urbandictionary.com/v0/define?term={text}").json()
+    try:
+        reply_text = f'Word: {text}\n\nDefinition: \n{results["list"][0]["definition"]}'
+        reply_text += f'\n\nExample: \n{results["list"][0]["example"]}'
     except:
-        reply_text = "No results found."
-    message.reply_text(reply_text, parse_mode=ParseMode.MARKDOWN)
-
-
-UD_HANDLER = DisableAbleCommandHandler(["ud"], ud, run_async=True)
-
-NEKO_PTB.add_handler(UD_HANDLER)
-
-__command_list__ = ["ud"]
-__handlers__ = [UD_HANDLER]
+        reply_txt = "No results found."
+    await e.reply(reply_txt, buttons=Button.url("🔎 Google it!", f"https://www.google.com/search?q={text}"), parse_mode="html")
+   
