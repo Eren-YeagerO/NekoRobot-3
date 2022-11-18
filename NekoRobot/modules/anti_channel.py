@@ -39,3 +39,16 @@ def eliminate_channel(update: Update, context: CallbackContext):
         message.delete()
         sender_chat = message.sender_chat
         bot.ban_chat_sender_chat(sender_chat_id=sender_chat.id, chat_id=chat.id)
+
+
+__mod_name__ = "Anti-Channel"
+
+__help__ ="""
+    ⚠️ WARNING ⚠️
+ 
+IF YOU USE THIS MODE, THE RESULT IS, IN THE GROUP, YOU CAN'T CHAT USING THE CHANNEL FOR FOREVER IF YOU GET BANNED ONCE
+Anti Channel Mode is a mode to automatically ban users who chat using Channels. 
+This command can only be used by Admins.
+/antichannel <'on'/'yes'> : enables anti-channel-mode
+/antichannel <'off'/'no'> : disabled anti-channel-mode
+"""
