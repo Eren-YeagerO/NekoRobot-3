@@ -58,7 +58,7 @@ NEKO_PTB.add_handler(SEX_HANDLER)
 
 __mod_name__ = "Games"
 __command_list__ = [
-   "truth", "dare", "tord", "rather",
+   "truth", "dare", "tord", "sex" "rather",
 ]
 
 __handlers__ = [
