@@ -31,7 +31,7 @@ async def ud_(e):
     try:
         text = e.text.split(" ", maxsplit=1)[1]
     except IndexError:
-        return await e.reply("Invalid Args")
+        return await e.reply("Please enter keywords to search on ud!")
     results = requests.get(
         f"https://api.urbandictionary.com/v0/define?term={text}").json()
     try:
