@@ -225,6 +225,6 @@ NEKO_PTB.add_handler(APPROVAL)
 NEKO_PTB.add_handler(UNAPPROVEALL)
 NEKO_PTB.add_handler(UNAPPROVEALL_BTN)
 
-__mod_name__ = "Aᴘᴘʀᴏᴠᴇ"
+__mod_name__ = "Approval"
 __command_list__ = ["approve", "unapprove", "approved", "approval"]
 __handlers__ = [APPROVE, DISAPPROVE, APPROVED, APPROVAL]
