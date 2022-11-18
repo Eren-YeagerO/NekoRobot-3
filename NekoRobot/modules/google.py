@@ -135,9 +135,9 @@ async def is_register_admin(chat, user):
 __mod_name__ = "Tools"
 
 __help__ = """
-⍟ /img <text> :- `Search Google For Images And Returns Them For Greater No. Of Results Specify Lim, For`
+⍟ /img <text> :- Search Google For Images And Returns Them For Greater No. Of Results Specify Lim, For
 
-ᴇɢ: `/img hello lim=10`
+E.g: /img hello lim=10
 
-⍟ /webss <Webname.com> :- `Get Screenshot Of Any Website You Want `.
+⍟ /webss <webname.com> :- Get Screenshot Of Any Website You Want.
 """
