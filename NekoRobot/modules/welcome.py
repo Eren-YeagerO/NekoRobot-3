@@ -184,64 +184,6 @@ def new_member(update: Update, context: CallbackContext):
                     pass
                 reply = False
 
-            # Give the owner a special welcome
-            if new_mem.id == OWNER_ID:
-                update.effective_message.reply_video(
-                    NEKO_IMG,
-                    caption="Oh, Genos? Let's get this moving.",
-                    reply_to_message_id=reply,
-                )
-                welcome_log = (
-                    f"{html.escape(chat.title)}\n"
-                    f"#USER_JOINED\n"
-                    f"Bot Owner just joined the chat"
-                )
-                continue
-
-            # Welcome Devs
-            elif new_mem.id in DEV_USERS:
-                update.effective_message.reply_text(
-                    "Whoa! S Rank Hunter just joined!",
-                    reply_to_message_id=reply,
-                )
-                continue
-
-            # Welcome Sudos
-            elif new_mem.id in DRAGONS:
-                update.effective_message.reply_photo(
-                    NEKO,
-                    caption="Huh! A Rank Hunter just joined! Stay Alert!",
-                    reply_to_message_id=reply,
-                )
-                continue
-
-            # Welcome Support
-            elif new_mem.id in DEMONS:
-                update.effective_message.reply_photo(
-                    NEKO,
-                    caption="Huh! Someone with a B Rank Hunter level just joined!",
-                    reply_to_message_id=reply,
-                )
-                continue
-
-            # Welcome Whitelisted
-            elif new_mem.id in TIGERS:
-                update.effective_message.reply_photo(
-                    NEKO,
-                    caption="Oof! A C Rank Hunter just joined!",
-                    reply_to_message_id=reply,
-                )
-                continue
-
-            # Welcome Tigers
-            elif new_mem.id in WOLVES:
-                update.effective_message.reply_photo(
-                    NEKO,
-                    caption="Oof! A D Rank Hunter just joined!",
-                    reply_to_message_id=reply,
-                )
-                continue
-
             # Welcome yourself
             elif new_mem.id == bot.id:
                 update.effective_message.reply_text(
@@ -495,21 +437,6 @@ def left_member(update: Update, context: CallbackContext):
 
             # Ignore bot being kicked
             if left_mem.id == bot.id:
-                return
-
-            # Give the owner a special goodbye
-            if left_mem.id == OWNER_ID:
-                update.effective_message.reply_video(
-                    NEKO_VID, caption="Oi! Genos! He left..", reply_to_message_id=reply
-                )
-                return
-
-            # Give the devs a special goodbye
-            elif left_mem.id in DEV_USERS:
-                update.effective_message.reply_text(
-                    "See you later at the Yūki Network!",
-                    reply_to_message_id=reply,
-                )
                 return
 
             # if media goodbye, use appropriate function for it
