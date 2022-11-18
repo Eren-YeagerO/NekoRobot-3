@@ -23,7 +23,7 @@ async def wish(e):
         await neko.send_file(
             e.chat_id,
             fire,
-            caption=f"**Hey [{e.sender.first_name}](tg://user?id={e.sender.id}), Your wish has been cast.💜**\n\n__chance of success {mm}%__",
+            caption=f"**Hey [{e.sender.first_name}](tg://user?id={e.sender.id}), Use /wish (Your Wish) 🙃",
             reply_to=lol,
         )
     if not e.is_reply:
@@ -32,6 +32,6 @@ async def wish(e):
         await neko.send_file(
             e.chat_id,
             fire,
-            caption=f"**Hey [{e.sender.first_name}](tg://user?id={e.sender.id}), Your wish has been cast.💜**\n\n__chance of success {mm}%__",
+            caption=f"**Hey [{e.sender.first_name}](tg://user?id={e.sender.id}), Your wish has been cast.💜**\n__chance of success 🌠 {mm}%__",
             reply_to=e,
         )
