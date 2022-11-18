@@ -28,6 +28,11 @@ def tord(update: Update, context: CallbackContext):
     update.effective_message.reply_text(random.choice(game_strings.TORD_STRINGS))
 
 @run_async
+def sex(update: Update, context: CallbackContext):
+    reply_animation = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
+    reply_animation(random.choice(game_strings.SEX))
+
+@run_async
 def wyr(update: Update, context: CallbackContext):
     update.effective_message.reply_text(random.choice(game_strings.WYR_STRINGS))
 
@@ -43,11 +48,13 @@ TRUTH_HANDLER = DisableAbleCommandHandler("truth", truth)
 DARE_HANDLER = DisableAbleCommandHandler("dare", dare)
 TORD_HANDLER = DisableAbleCommandHandler("tord", tord)
 WYR_HANDLER = DisableAbleCommandHandler("rather", wyr)
+SEX_HANDLER = DisableAbleCommandHandler("sex", sex)
 
 NEKO_PTB.add_handler(TRUTH_HANDLER)
 NEKO_PTB.add_handler(DARE_HANDLER)
 NEKO_PTB.add_handler(TORD_HANDLER)
 NEKO_PTB.add_handler(WYR_HANDLER)
+NEKO_PTB.add_handler(SEX_HANDLER)
 
 __mod_name__ = "Games"
 __command_list__ = [
