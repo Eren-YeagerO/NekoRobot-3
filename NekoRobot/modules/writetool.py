@@ -3,7 +3,7 @@ from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from NekoRobot import BOT_NAME, BOT_USERNAME
-from NekoRobot import tbot as fallen
+from NekoRobot import pgram as fallen
 
 
 @fallen.on_message(filters.command("write"))
