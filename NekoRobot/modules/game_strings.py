@@ -186,6 +186,23 @@ DARE_STRINGS = (
    "Send more suggestions to @HSSLevii", 
 )
 
+SEX  = (
+    "Your Di*k Is Not Long Enough.",
+    "Kids Do Not Have Sex With Adults.",
+    "Ohh No, You Made Her Pregnant.",
+    "You're Di*kless, Try Again Later.",
+    "Shut-up Small Di*k.",
+    "Can You Handle My Pussy?",
+    "Bring Condom First",
+    "Onii-Chan, Yamete Kudasaiii...",
+    "Ahhhh... Ahhhhhh... Aaahhhhhhhh...",
+    "Get Lost, Horny.",
+    "Tell Me Your Dad's Number, I Gotta Show This To Him.",
+    "Jhaante Na Chuchi, Baatein Uchi-Uchi",
+    "Masturbation Is Your Only Option.",
+    "Ahhh... Not There, Ahhhhhh...",
+    "I'm Ready For A White Shower, Daddy!")
+
 TORD_STRINGS = (
    "Change your profile pic to a dog.",
    "Do a photograph reveal.",
