@@ -23,14 +23,8 @@ from telegram.utils.helpers import escape_markdown, mention_html, mention_markdo
 
 import NekoRobot.modules.sql.welcome_sql as sql
 from NekoRobot import (
-    DEMONS,
-    DEV_USERS,
-    DRAGONS,
     LOGGER,
     NEKO_PTB,
-    OWNER_ID,
-    TIGERS,
-    WOLVES,
     sw,
 )
 from NekoRobot.modules.helper_funcs.chat_status import is_user_ban_protected, user_admin
