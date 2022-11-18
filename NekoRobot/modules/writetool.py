@@ -14,7 +14,7 @@ async def handwrite(_, message: Message):
         )
         m = await pgram.send_message(message.chat.id, "waito...")
         photo = "https://apis.xditya.me/write?text=" + name
-        await pgram.send_photo(message.chat.id, photo=photo)
+        await pgram.send_photo(message.chat.id, photo=photo, caption=f"✍️ Written By @Nezuko_ProXBot")
         await m.delete()
     else:
         lol = message.reply_to_message.text
@@ -25,7 +25,7 @@ async def handwrite(_, message: Message):
         await m.delete()
 
 
-__mod_name__ = "Write ✍️"
+__mod_name__ = "Write"
 
 __help__ = """
  Writes the given text on white page with a pen 🖊
