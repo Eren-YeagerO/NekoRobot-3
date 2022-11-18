@@ -138,6 +138,4 @@ __help__ = """
 ⍟ /img <text> :- Search Google For Images And Returns Them For Greater No. Of Results Specify Lim, For
 
 E.g: /img hello lim=10
-
-⍟ /webss <webname.com> :- Get Screenshot Of Any Website You Want.
 """
