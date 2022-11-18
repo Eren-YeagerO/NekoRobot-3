@@ -25,11 +25,9 @@ async def handwrite(_, message: Message):
         await m.delete()
 
 
-__mod_name__ = "𝚆ʀɪᴛᴇ"
+__mod_name__ = "Write ✍️"
 
 __help__ = """
-
-ᴡʀɪᴛᴇs ᴛʜᴇ ɢɪᴠᴇɴ ᴛᴇxᴛ ᴏɴ ᴡʜɪᴛᴇ ᴘᴀɢᴇ ᴡɪᴛʜ ᴀ ᴘᴇɴ 🖊
-
-/write <text> *:*` ᴡʀɪᴛᴇs ᴛʜᴇ ɢɪᴠᴇɴ ᴛᴇxᴛ `.
+ Writes the given text on white page with a pen 🖊
+❍ /write <text> *:* Writes the given text.
  """
