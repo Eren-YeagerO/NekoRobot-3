@@ -1,66 +1,35 @@
-import requests
 from pyrogram import filters
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+from pyrogram.types import Message
 
-from NekoRobot import BOT_NAME, BOT_USERNAME
-from NekoRobot import pgram as fallen
+from NekoRobot import pgram
 
 
-@fallen.on_message(filters.command("write"))
+@pgram.on_message(filters.command("write"))
 async def handwrite(_, message: Message):
     if not message.reply_to_message:
-        text = message.text.split(None, 1)[1]
-        m = await fallen.send_message(
-            message.chat.id, "`Please wait...,\n\nWriting your text...`"
+        name = (
+            message.text.split(None, 1)[1]
+            if len(message.command) < 3
+            else message.text.split(None, 1)[1].replace(" ", "%20")
         )
-        API = f"https://api.sdbots.tk/write?text={text}"
-        req = requests.get(API).url
-        caption = f"""
-Successfully Written Text 💘
-
-✨ **Written By :** [{BOT_NAME}](https://t.me/{BOT_USERNAME})
-🥀 **Requested by :** {message.from_user.mention}
-❄ **Link :** `{req}`
-"""
+        m = await pgram.send_message(message.chat.id, "waito...")
+        photo = "https://apis.xditya.me/write?text=" + name
+        await pgram.send_photo(message.chat.id, photo=photo)
         await m.delete()
-        await fallen.send_photo(
-            message.chat.id,
-            photo=req,
-            caption=caption,
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("• ᴛᴇʟᴇɢʀᴀᴩʜ •", url=f"{req}")]]
-            ),
-        )
     else:
         lol = message.reply_to_message.text
-        m = await fallen.send_message(
-            message.chat.id, "`Please wait...,\n\nWriting your text...`"
-        )
-        API = f"https://api.sdbots.tk/write?text={lol}"
-        req = requests.get(API).url
-        caption = f"""
-Successfully Written Text 💘
-
-✨ **Written By :** [{BOT_NAME}](https://t.me/{BOT_USERNAME})
-🥀 **Requested by :** {message.from_user.mention}
-❄ **Link :** `{req}`
-"""
+        name = lol.split(None, 0)[0].replace(" ", "%20")
+        m = await pgram.send_message(message.chat.id, "waito..")
+        photo = "https://apis.xditya.me/write?text=" + name
+        await pgram.send_photo(message.chat.id, photo=photo)
         await m.delete()
-        await fallen.send_photo(
-            message.chat.id,
-            photo=req,
-            caption=caption,
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("• ᴛᴇʟᴇɢʀᴀᴩʜ •", url=f"{req}")]]
-            ),
-        )
 
 
-__mod_name__ = "Write✍️"
+__mod_name__ = "𝚆ʀɪᴛᴇ"
 
 __help__ = """
 
- Writes the given text on white page with a pen 🖊
+ᴡʀɪᴛᴇs ᴛʜᴇ ɢɪᴠᴇɴ ᴛᴇxᴛ ᴏɴ ᴡʜɪᴛᴇ ᴘᴀɢᴇ ᴡɪᴛʜ ᴀ ᴘᴇɴ 🖊
 
-❍ /write <text> *:* Writes the given text.
+/write <text> *:*` ᴡʀɪᴛᴇs ᴛʜᴇ ɢɪᴠᴇɴ ᴛᴇxᴛ `.
  """
