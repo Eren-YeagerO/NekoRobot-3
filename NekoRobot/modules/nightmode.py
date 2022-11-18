@@ -92,7 +92,7 @@ async def can_change_info(message):
     )
 
 
-@register(pattern="^/(nimode|Nightmode|NightMode) ?(.*)")
+@register(pattern="^/(nimode|nightmode|NightMode) ?(.*)")
 async def profanity(event):
     if event.fwd_from:
         return
@@ -180,7 +180,7 @@ scheduler.start()
 
 
 __help__ = """
- • `/nimode` on/off
+ • /nightmode on/off
  
 **Note:** Night Mode chats get Automatically closed at 12pm(IST)
 and Automatically openned at 6am(IST) To Prevent Night Spams.
