@@ -114,7 +114,7 @@ def reverse(update: Update, context: CallbackContext) -> None:
         buttuns = []
         if guess:
             MsG.edit_text("Hmmm....")
-            search_result = os.remove("Results for")
+            search_result = guess.replace("Results for")
             buttuns.append(
                 [InlineKeyboardButton(text="Images Link", url=fetchUrl)])
         else:
