@@ -25,6 +25,7 @@ SOFTWARE.
 import requests
 from NekoRobot.events import register
 from telethon import Button
+from telegram.error import BadRequest
 
 @register(pattern="[/!]ud")
 async def ud_(e):
