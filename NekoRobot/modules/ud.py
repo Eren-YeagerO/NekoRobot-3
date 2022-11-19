@@ -46,8 +46,4 @@ async def ud_(e):
         reply = reply.replace(chars, "[]")
     if len(reply) >= 4096:
         reply = reply[:4096]  # max msg lenth of tg.
-    try:
-        await e.reply_txt(reply)
-    except BadRequest as err:
-        await e.reply_txt(f"Error! {err.message}")
    
