@@ -30,12 +30,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
 from requests import get
+from NekoRobot.events import register
 from telegram import Update
 from telegram.ext import CallbackContext
 from telegram.error import BadRequest
-from NekoRobot.modules.disable import DisableAbleCommandHandler
 
 
+@register(pattern="[/!]ud")
 async def ud(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     args = context.args
