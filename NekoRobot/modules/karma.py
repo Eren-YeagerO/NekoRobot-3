@@ -24,7 +24,8 @@ SOFTWARE.
 ## thanks to Moezilla (Pranav) for this awesome code
 import asyncio
 from NekoRobot.utils.permissions import adminsOnly
-from NekoRobot import pgram as app, OWNER_ID, db, DEV_USERS
+from NekoRobot import pgram as app, OWNER_ID, DEV_USERS
+from NekoRobot.mongo import db
 from NekoRobot.utils.errors import capture_err
 from NekoRobot.modules.mongo.karma_mongo import (
     alpha_to_int,
@@ -191,7 +192,7 @@ async def karma(_, message):
 
 
 
-__mod_name__ = "𝙺ᴀʀᴍᴀ"
+__mod_name__ = "Karma"
 __help__ = """
 
 *Upvote* - Use upvote keywords like "+", "+1", "thanks", etc. to upvote a message.
