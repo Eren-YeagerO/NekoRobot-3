@@ -172,7 +172,7 @@ async def get_users(show):
     info = await tbot.get_entity(show.chat_id)
     title = info.title or "this chat"
     mentions = f"Users in {title}: \n"
-    async for user in telethn.iter_participants(show.chat_id):
+    async for user in tbot.iter_participants(show.chat_id):
         mentions += (
             f"\nDeleted Account {user.id}"
             if user.deleted
