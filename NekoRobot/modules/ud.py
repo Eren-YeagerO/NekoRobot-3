@@ -43,7 +43,7 @@ async def ud_(e):
     ignore_chars = "[]"
     reply = reply_txt
     for chars in ignore_chars:
-        reply = reply.replace(chars, "[]")
+        reply = reply.replace([],"")
     if len(reply) >= 4096:
         reply = reply[:4096]  # max msg lenth of tg.
    
