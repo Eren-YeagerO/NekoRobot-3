@@ -1,70 +1,43 @@
 """
-BSD 2-Clause License
+MIT License
 
-Copyright (C) 2017-2019, Paul Larsen
-Copyright (C) 2021-2022, Awesome-RJ, [ https://github.com/Awesome-RJ ]
-Copyright (c) 2021-2022, Yūki • Black Knights Union, [ https://github.com/Awesome-RJ/CutiepiiRobot ]
+Copyright (c) 2022 Arsh
 
-All rights reserved.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-1. Redistributions of source code must retain the above copyright notice, this
-   list of conditions and the following disclaimer.
-
-2. Redistributions in binary form must reproduce the above copyright notice,
-   this list of conditions and the following disclaimer in the documentation
-   and/or other materials provided with the distribution.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 """
 
-from requests import get
+import requests
 from NekoRobot.events import register
-from telegram import Update
-from telegram.ext import CallbackContext
+from telethon import Button
 from telegram.error import BadRequest
 
-
 @register(pattern="[/!]ud")
-async def ud(update: Update, context: CallbackContext) -> None:
-    msg = update.effective_message
-    args = context.args
-    text = " ".join(args).lower()
-    if not text:
-        await msg.reply_text("Please enter keywords to search on ud!")
-        return
-    if text == "Cutiepii":
-        await msg.reply_text(
-            "Cutiepii is my owner so if you search him on urban dictionary you can't find the meaning because he is my husband and only me who know what's the meaning of!"
-        )
-        return
+async def ud_(e):
     try:
-        results = get(
-            f"http://api.urbandictionary.com/v0/define?term={text}").json()
-        reply_text = f'Word: {text}\n\nDefinition: \n{results["list"][0]["definition"]}'
-        reply_text += f'\n\nExample: \n{results["list"][0]["example"]}'
+        text = e.text.split(" ", maxsplit=1)[1]
     except IndexError:
-        reply_text = (
-            f"Word: {text}\n\nResults: Sorry could not find any matching results!"
-        )
-    ignore_chars = "[]"
-    reply = reply_text
-    for chars in ignore_chars:
-        reply = reply.replace(chars, "")
-    if len(reply) >= 4096:
-        reply = reply[:4096]  # max msg lenth of tg.
+        return await e.reply("Please enter keywords to search on ud!")
+    results = requests.get(
+        f"https://api.urbandictionary.com/v0/define?term={text}").json()
     try:
-        await msg.reply_text(reply)
-    except BadRequest as err:
-        await msg.reply_text(f"Error! {err.message}")
+        reply_txt = f'Word: {text}\n\nDefinition: \n{results["list"][0]["definition"]}\n\nExample: \n{results["list"][0]["example"]}'
+    except:
+        reply_txt = f'Word: {text}\n\nResults: Sorry could not find any matching results!'
+    await e.reply(reply_txt, buttons=Button.url("🔎 Google it!", f"https://www.google.com/search?q={text}"), parse_mode="html")
+   
