@@ -33,7 +33,6 @@ from requests import get
 from telegram import Update
 from telegram.ext import CallbackContext
 from telegram.error import BadRequest
-from NekoRobot import NEKO_PTB
 from NekoRobot.modules.disable import DisableAbleCommandHandler
 
 
@@ -68,8 +67,3 @@ async def ud(update: Update, context: CallbackContext) -> None:
         await msg.reply_text(reply)
     except BadRequest as err:
         await msg.reply_text(f"Error! {err.message}")
-
-
-NEKO_PTB.add_handler(DisableAbleCommandHandler(["ud"], ud))
-
-__command_list__ = ["ud"]
