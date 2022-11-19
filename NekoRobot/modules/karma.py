@@ -54,7 +54,7 @@ from NekoRobot import MONGO_DB_URL
 from pymongo import MongoClient
 
 worddb = MongoClient(MONGO_DB_URL) 
-k = worddb["Himalol"]["karma_status"]
+k = worddb["Nezukolol"]["karma_status"]
 
  
 
