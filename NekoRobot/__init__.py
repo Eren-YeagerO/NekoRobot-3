@@ -155,6 +155,7 @@ if ENV:
     BOT_ID = 1412878118
     STRICT_GMUTE = bool(os.environ.get("STRICT_GMUTE", True))
     MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
+    MONGO_DB_URL = os.environ.get("MONGO_DB_URL", None)
     REM_BG_API_KEY = os.environ.get(
         "REM_BG_API_KEY", None
     )  # From:- https://www.remove.bg/
