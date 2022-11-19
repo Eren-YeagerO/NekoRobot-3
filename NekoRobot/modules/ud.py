@@ -38,12 +38,12 @@ async def ud_(e):
     try:
         reply_txt = f'Word: {text}\n\nDefinition: \n{results["list"][0]["definition"]}\n\nExample: \n{results["list"][0]["example"]}'
     except:
-        reply_txt = "No results found."
+        reply_txt = f'Word: {text}\n\nResults: Sorry could not find any matching results!'
     await e.reply(reply_txt, buttons=Button.url("🔎 Google it!", f"https://www.google.com/search?q={text}"), parse_mode="html")
     ignore_chars = "[]"
     reply = reply_txt
     for chars in ignore_chars:
-        reply = reply.replace(chars, "")
+        reply = reply.replace(chars,"")
     if len(reply) >= 4096:
         reply = reply[:4096]  # max msg lenth of tg.
     try:
