@@ -38,7 +38,7 @@ from NekoRobot.modules.helper_funcs.chat_status import user_admin, user_admin_no
 from NekoRobot import  NEKO_PTB
 from NekoRobot.modules.log_channel import gloggable, loggable
 
-bot_name = f"{dispatcher.bot.first_name}"
+bot_name = f"{NEKO_PTB.bot.first_name}"
 
 from NekoRobot import MONGO_DB_URL
 
