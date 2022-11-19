@@ -2,7 +2,7 @@ import random
 
 import requests
 from telegram.ext import Filters, CallbackContext
-
+from telegram import Update
 from NekoRobot import NEKO_PTB
 from NekoRobot.modules.disable import MessageHandler
 
