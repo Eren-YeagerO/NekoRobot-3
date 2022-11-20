@@ -12,7 +12,7 @@ from telegram.ext import (
 )
 
 import NekoRobot.modules.sql.users_sql as sql
-from NekoRobot import DEV_USERS, LOGGER, OWNER_ID, dispatcher
+from NekoRobot import DEV_USERS, LOGGER, OWNER_ID, NEKO_PTB
 from NekoRobot.modules.helper_funcs.chat_status import dev_plus, sudo_plus
 from NekoRobot.modules.sql.users_sql import get_all_users
 
