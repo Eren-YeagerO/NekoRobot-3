@@ -24,8 +24,9 @@ SOFTWARE.
 ## thanks to Moezilla (Pranav) for this awesome code
 import asyncio
 from NekoRobot.utils.permissions import adminsOnly
-from NekoRobot import pgram as app, OWNER_ID, db, DEV_USERS
+from NekoRobot import pgram as app, OWNER_ID, DEV_USERS
 from NekoRobot.utils.errors import capture_err
+from NekoRobot.mongo import db
 from NekoRobot.modules.mongo.karma_mongo import (
     alpha_to_int,
     get_karma,
