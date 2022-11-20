@@ -184,7 +184,31 @@ def new_member(update: Update, context: CallbackContext):
                     "❤️ Thanks for adding me to this group!",
                     reply_to_message_id=reply,
                 )
-                continue
+                creator = None
+                for x in bot.get_chat_administrators(update.effective_chat.id):
+                    if x.status == "creator":
+                        creator = x.user
+                        break
+                if creator:
+                    bot.send_message(
+                        meow,
+                        f"""
+                        #NEWGROUP
+                        \nGroup Name: **{chat.title}**
+                        \nID: `{chat.id}`
+                        \nCreator ID: `{creator.id}`
+                        """,
+                        parse_mode=ParseMode.MARKDOWN,
+                    )
+                else:
+                    bot.send_message(
+                        meow,
+                        "#NEWGROUP\n<b>Group name:</b> {}\n<b>ID:</b> <code>{}</code>".format(
+                            html.escape(chat.title),
+                            chat.id,
+                        ),
+                        parse_mode=ParseMode.HTML,
+                    )
 
             else:
                 buttons = sql.get_welc_buttons(chat.id)
