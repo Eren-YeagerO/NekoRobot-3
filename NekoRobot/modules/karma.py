@@ -24,8 +24,7 @@ SOFTWARE.
 ## thanks to Moezilla (Pranav) for this awesome code
 import asyncio
 from NekoRobot.utils.permissions import adminsOnly
-from NekoRobot import pgram as app, OWNER_ID, DEV_USERS
-from NekoRobot.mongo import db
+from NekoRobot import pgram as app, OWNER_ID, db, DEV_USERS
 from NekoRobot.utils.errors import capture_err
 from NekoRobot.modules.mongo.karma_mongo import (
     alpha_to_int,
@@ -55,7 +54,7 @@ from NekoRobot import MONGO_DB_URL
 from pymongo import MongoClient
 
 worddb = MongoClient(MONGO_DB_URL) 
-k = worddb["Nezukolol"]["karma_status"]
+k = worddb["Himalol"]["karma_status"]
 
  
 
@@ -103,10 +102,10 @@ async def upvote(_, message):
         else:
             karma = 1
         new_karma = {"karma": karma}
-        update_karma(
-            chat_id, int_to_alpha(user_id), new_karma
+        await update_karma(
+            chat_id, await int_to_alpha(user_id), new_karma
         )
-        message.reply_text(
+        await message.reply_text(
             f"Incremented Karma of {user_mention} By 1 \nTotal Points: {karma}"
         )
 
@@ -132,15 +131,15 @@ async def downvote(_, message):
             return
         user_id = message.reply_to_message.from_user.id
         user_mention = message.reply_to_message.from_user.mention
-        current_karma = get_karma(chat_id, int_to_alpha(user_id))
+        current_karma = await get_karma(chat_id, await int_to_alpha(user_id))
         if current_karma:
             current_karma = current_karma["karma"]
             karma = current_karma - 1
         else:
             karma = 1
         new_karma = {"karma": karma}
-        update_karma(chat_id, int_to_alpha(user_id), new_karma)
-        message.reply_text(
+        await update_karma(chat_id, await int_to_alpha(user_id), new_karma)
+        await message.reply_text(
             f"Decremented Karma Of {user_mention} By 1 \nTotal Points: {karma}"
         )
 
@@ -150,30 +149,30 @@ async def downvote(_, message):
 async def karma(_, message):
     chat_id = message.chat.id
     if not message.reply_to_message:
-        m = message.reply_text("Analyzing Karma...Will Take 10 Seconds")
+        m = await message.reply_text("Analyzing Karma...Will Take 10 Seconds")
         karma = await get_karmas(chat_id)
         if not karma:
-            m.edit("No karma in DB for this chat.")
+            await m.edit("No karma in DB for this chat.")
             return
         msg = f"**Karma list of {message.chat.title}:- **\n"
         limit = 0
         karma_dicc = {}
         for i in karma:
-            user_id = alpha_to_int(i)
+            user_id = await alpha_to_int(i)
             user_karma = karma[i]["karma"]
             karma_dicc[str(user_id)] = user_karma
             karma_arranged = dict(
                 sorted(karma_dicc.items(), key=lambda item: item[1], reverse=True)
             )
         if not karma_dicc:
-            m.edit("No karma in DB for this chat.")
+            await m.edit("No karma in DB for this chat.")
             return
         for user_idd, karma_count in karma_arranged.items():
             if limit > 9:
                 break
             try:
-                user = app.get_users(int(user_idd))
-                asyncio.sleep(0.8)
+                user = await app.get_users(int(user_idd))
+                await asyncio.sleep(0.8)
             except Exception:
                 continue
             first_name = user.first_name
@@ -182,12 +181,12 @@ async def karma(_, message):
             username = user.username
             msg += f"**{karma_count}**  {(first_name[0:12] + '...') if len(first_name) > 12 else first_name}  `{('@' + username) if username else user_idd}`\n"
             limit += 1
-        m.edit(msg)
+        await m.edit(msg)
     else:
         user_id = message.reply_to_message.from_user.id
-        karma = get_karma(chat_id, int_to_alpha(user_id))
+        karma = await get_karma(chat_id, await int_to_alpha(user_id))
         karma = karma["karma"] if karma else 0
-        message.reply_text(f"**Total Point :** {karma}")
+        await message.reply_text(f"**Total Point :** {karma}")
 
 
 
