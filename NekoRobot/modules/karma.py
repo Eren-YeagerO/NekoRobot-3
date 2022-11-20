@@ -60,10 +60,10 @@ k = worddb["Himalol"]["karma_status"]
  
 
 
-async def is_admins(chat_id: int):
+def is_admins(chat_id: int):
     return [
         member.user.id
-        async for member in app.get_chat_members(
+        for member in app.get_chat_members(
             chat_id, filter="administrators"
         )
     ]
@@ -82,7 +82,7 @@ async def is_admins(chat_id: int):
     & ~filters.bot,
     group=karma_positive_group,
 )
-async def upvote(_, message):
+def upvote(_, message):
     chat_id = message.chat.id
     is_karma = k.find_one({"chat_id": chat_id})    
     if not is_karma:
@@ -120,7 +120,7 @@ async def upvote(_, message):
     & ~filters.bot,
     group=karma_negative_group,
 )
-async def downvote(_, message):
+def downvote(_, message):
     chat_id = message.chat.id
     is_karma = k.find_one({"chat_id": chat_id})    
     if not is_karma:
@@ -147,7 +147,7 @@ async def downvote(_, message):
 
 @app.on_message(filters.command("karmastats") & filters.group)
 @capture_err
-async def karma(_, message):
+def karma(_, message):
     chat_id = message.chat.id
     if not message.reply_to_message:
         m = await message.reply_text("Analyzing Karma...Will Take 10 Seconds")
