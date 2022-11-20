@@ -94,7 +94,7 @@ async def upvote(_, message):
             return
         user_id = message.reply_to_message.from_user.id
         user_mention = message.reply_to_message.from_user.mention
-        current_karma = get_karma(
+        current_karma = await get_karma(
             chat_id, int_to_alpha(user_id)
         )
         if current_karma:
