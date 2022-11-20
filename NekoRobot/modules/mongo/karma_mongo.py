@@ -35,7 +35,7 @@ async def get_karmas_count() -> dict:
         return {}
     chats_count = 0
     karmas_count = 0
-    for chat in await chats.to_list(length=1000000):
+    for chat in  chats.to_list(length=1000000):
         for i in chat['karma']:
             karma_ = chat['karma'][i]['karma']
             if karma_ > 0:
@@ -49,9 +49,9 @@ async def user_global_karma(user_id) -> int:
     if not chats:
         return 0
     total_karma = 0
-    for chat in await chats.to_list(length=1000000):
-        karma = await get_karma(
-            chat["chat_id"], await int_to_alpha(user_id)
+    for chat in  chats.to_list(length=1000000):
+        karma =  get_karma(
+            chat["chat_id"],  int_to_alpha(user_id)
         )
         if karma and int(karma['karma']) > 0:
             total_karma += int(karma['karma'])
@@ -59,7 +59,7 @@ async def user_global_karma(user_id) -> int:
 
 
 async def get_karmas(chat_id: int) -> Dict[str, int]:
-    karma = await karmadb.find_one({"chat_id": chat_id})
+    karma =  karmadb.find_one({"chat_id": chat_id})
     if not karma:
         return {}
     return karma['karma']
@@ -67,37 +67,37 @@ async def get_karmas(chat_id: int) -> Dict[str, int]:
 
 async def get_karma(chat_id: int, name: str) -> Union[bool, dict]:
     name = name.lower().strip()
-    karmas = await get_karmas(chat_id)
+    karmas =  get_karmas(chat_id)
     if name in karmas:
         return karmas[name]
 
 
 async def update_karma(chat_id: int, name: str, karma: dict):
     name = name.lower().strip()
-    karmas = await get_karmas(chat_id)
+    karmas =  get_karmas(chat_id)
     karmas[name] = karma
-    await karmadb.update_one(
+     karmadb.update_one(
         {"chat_id": chat_id}, {"$set": {"karma": karmas}}, upsert=True
     )
 
 
 async def is_karma_on(chat_id: int) -> bool:
-    chat = await karmadb.find_one({"chat_id_toggle": chat_id})
+    chat =  karmadb.find_one({"chat_id_toggle": chat_id})
     return not chat
 
 
 async def karma_on(chat_id: int):
-    is_karma = await is_karma_on(chat_id)
+    is_karma =  is_karma_on(chat_id)
     if is_karma:
         return
-    return await karmadb.delete_one({"chat_id_toggle": chat_id})
+    return  karmadb.delete_one({"chat_id_toggle": chat_id})
 
 
 async def karma_off(chat_id: int):
-    is_karma = await is_karma_on(chat_id)
+    is_karma =  is_karma_on(chat_id)
     if not is_karma:
         return
-    return await karmadb.insert_one({"chat_id_toggle": chat_id})
+    return  karmadb.insert_one({"chat_id_toggle": chat_id})
 
 async def int_to_alpha(user_id: int) -> str:
     alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
