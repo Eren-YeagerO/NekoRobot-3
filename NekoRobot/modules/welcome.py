@@ -25,7 +25,7 @@ import NekoRobot.modules.sql.welcome_sql as sql
 from NekoRobot import (
     LOGGER,
     NEKO_PTB,
-    EVENT_LOGS as meow
+    EVENT_LOGS as meow,
     sw,
 )
 from NekoRobot.modules.helper_funcs.chat_status import is_user_ban_protected, user_admin
