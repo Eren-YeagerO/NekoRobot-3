@@ -40,7 +40,7 @@ def get_user_id(username):
     else:
         for user_obj in users:
             try:
-                userdat = dispatcher.bot.get_chat(user_obj.user_id)
+                userdat = NEKO_PTB.bot.get_chat(user_obj.user_id)
                 if userdat.username == username:
                     return userdat.id
 
