@@ -103,7 +103,7 @@ def chatmemberupdates(update: Update, context: CallbackContext) -> Optional[str]
             if newstat == "kicked":
                 if do_announce(chat):
                     update.effective_chat.send_message(
-                        f"{member_name} was demoted anad removed by {cause_name}.",
+                        f"{member_name} was demoted and removed by {cause_name}.",
                         parse_mode=ParseMode.HTML,
                     )
                 log_message = (
