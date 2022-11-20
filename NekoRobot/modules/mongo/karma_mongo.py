@@ -51,7 +51,7 @@ async def user_global_karma(user_id) -> int:
     total_karma = 0
     for chat in chats.to_list(length=1000000):
         karma = get_karma(
-            chat["chat_id"], int_to_alpha(user_id)
+            chat["chat_id"], await int_to_alpha(user_id)
         )
         if karma and int(karma['karma']) > 0:
             total_karma += int(karma['karma'])
