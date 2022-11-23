@@ -86,7 +86,7 @@ async def drawText(image_path, text):
 
     else:
 
-        fnt = "./NekoRobot/LOGO_FONT/Vampire Wars.otf"
+        fnt = "./NekoRobot/LOGO_FONT/default.ttf"
 
     m_font = ImageFont.truetype(fnt, int((70 / 640) * i_width))
 
